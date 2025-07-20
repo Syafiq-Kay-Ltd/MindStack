@@ -1,0 +1,32 @@
+{% extends "progress_base.html" %}
+
+{% block title %}Progress Log List{% endblock title %}
+
+{% block progress_header %}{% endblock progress_header %}
+
+{% block progress_content %}
+    <section class="card">
+        <div class="card-header">
+            <h3>Progress Logs</h3>
+        </div>
+        <div class="card-body">
+            {% if not progress_logs %}
+            <p class="text-muted">No progress logs available.</p>
+            {% else %}    
+            <ul class="list-group">
+                {% for log in progress_logs %}
+                <li class="list-group-item">
+                    <h5>{{ log.title }}</h5>
+                    <p>{{ log.summary }}</p>
+                    <a href="{% url 'progress:progress-log-detail' log.id %}" class="btn btn-primary">View Details</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'progress:progress-main' %}" class="btn btn-primary">Back to Main Page</a>
+            {% block progress_footer %}{% endblock progress_footer %}
+        </div>
+    </section>
+{% endblock %}
