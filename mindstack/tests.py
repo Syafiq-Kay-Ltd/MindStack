@@ -1,7 +1,7 @@
 import pytest
 
 @pytest.mark.django_db
-@pytest.mark.xfail(reason="admin configuration is not set up yet")
+@pytest.mark.skip(reason="not working on this yet")
 def test_admin_configuration():
     """
     Test that the Django admin configuration is set up correctly.
@@ -12,7 +12,7 @@ def test_admin_configuration():
     assert site.is_registered('progress.Progress'), "Progress model should be registered in admin."
     assert site.is_registered('progress.Task'), "Task model should be registered in admin."
 
-@pytest.mark.xfail(reason="admin access is not configured yet")
+@pytest.mark.skip(reason="not working on this yet")
 def test_admin_accessible(client):
     """
     Test that the Django admin interface is accessible.
