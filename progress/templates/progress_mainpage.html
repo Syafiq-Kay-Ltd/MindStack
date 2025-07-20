@@ -43,12 +43,13 @@
             {% block progress_journal %}
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">Progress Journal</h2>
+                    <h2 class="card-title">{% if progresslog %}{{ progresslog.title }}{% else %}Progress Journal{% endif %}</h2>
                 </div>
                 <div class="card-body">
-                    <p class="alert alert-danger">in progress</p>
-                    <p class="card-text">Track your learning journey here.</p>
-                    <a href="#" class="btn btn-primary">Start Journal</a>
+                    <p>{% if progresslog %}{{ progresslog.summary }}{% else %}No progress log available.{% endif %}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'progress:progress-log-list' %}" class="btn btn-primary">View all log</a>
                 </div>
             </div>
             {% endblock %}
