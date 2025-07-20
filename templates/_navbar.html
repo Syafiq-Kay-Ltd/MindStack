@@ -1,0 +1,24 @@
+<!-- this is navbar - coming soon -->
+ {% load static %}
+{% load i18n %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <div class="container">
+        <!-- Navbar Brand -->
+        <a class="navbar-brand" href="{% url 'progress:progress-main' %}"><i class="fa-solid fa-list-check"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar Text -->
+        <span class="navbar-text ml-auto">
+            {% block navbar_text %}
+                <span class="text-white text-center"><h1>MindStack</h1>Track your progress and manage your knowledge effectively.</span>
+            {% endblock %}
+        </span>
+        <!-- Navbar Links to be added here -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link disabled" aria-current="page" href="{% url 'progress:progress-main' %}"><i class="fa-solid fa-list-check"></i> coming soon</a>
+            </div>
+        </div>
+    </div>
+</nav>

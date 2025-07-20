@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}MindStack{% endblock %}</title>
+    {% include '_navbar.html' %}
+    {% include '_css.html' %}
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="container mt-5 mb-5">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% include '_footer.html' %}
+    {% include '_js.html' %}
+    <script>
+        {% block extra_js %}{% endblock %}
+    </script>
+</body>
+</html>

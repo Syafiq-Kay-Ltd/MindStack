@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Progress Log
+{% endblock title %}
+
+{% block content %}
+    {% block progress_header %}{% endblock progress_header %}
+    {% block progress_content %}{% endblock %}
+    {% block progress_footer %}
+        <div class="progress-footer text-center">
+            <p><i class="fa-solid fa-copyright"></i> {% now "Y" %} MindStack by Syafiq Kay. All rights reserved.</p>
+        </div>
+    {% endblock progress_footer %}
+{% endblock %}
+
+{% block extra_js %}
+    <!-- add progress specific js here -->
+{% endblock %}

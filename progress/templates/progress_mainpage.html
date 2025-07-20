@@ -1,0 +1,93 @@
+{% extends "progress_base.html" %}
+
+{% block title %}MindStack | Homepage{% endblock %}
+
+{% block extra_css %}
+    <!-- add progress specific css here using include -->
+{% endblock %}
+
+{% block navbar_text %}
+<h1 class="mt-5">Welcome to MindStack</h1>
+{% endblock %}
+
+{% block progress_header %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Progress Overview</h2>
+                <p class="text-muted">Track your learning and knowledge management journey</p>
+            </div>
+        </div>
+    </div>
+{% endblock progress_header %}
+
+{% block progress_content %}
+    <!-- top module: brief introduction to MindStack -->
+    <div class="row mt-5 mb-5">
+        <div class="col-12 text-center">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">MindStack Overview</h2>
+                </div>
+                <div class="card-body">
+                    <p class="alert alert-danger">in progress</p>
+                    <p class="card-text">MindStack is designed to help you organize your thoughts and knowledge in a structured way, inspired by the principles of Zettelkasten and test-driven development.</p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main module: progress journal and docs/help -->
+    <div class="row mt-5 mb-5">
+        <div class="col-md-6 text-center">
+            {% block progress_journal %}
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Progress Journal</h2>
+                </div>
+                <div class="card-body">
+                    <p class="alert alert-danger">in progress</p>
+                    <p class="card-text">Track your learning journey here.</p>
+                    <a href="#" class="btn btn-primary">Start Journal</a>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+        <div class="col-md-6 text-center">
+            {% block progress_docs %}
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Documentation</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="alert alert-danger">in progress</p>
+                        <p class="card-text">Find help and resources to enhance your experience.</p>
+                        <a href="#" class="btn btn-primary">View Docs</a>
+                        <a href="#" class="btn btn-primary">Help Center</a>
+                        <a href="#" class="btn btn-primary">API Reference</a>
+                        <a href="#" class="btn btn-primary">Community Forum</a>
+                        <a href="#" class="btn btn-primary">Feedback</a>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+    <!-- bottom module: notes -->
+    <div class="row mt-5 mb-5">
+        <div class="col-12 text-center">
+            {% block progress_notes %}
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Notes</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="alert alert-danger">in progress</p>
+                        <p class="card-text">Manage your notes effectively.</p>
+                        <p>View and manage your notes here.</p>
+                        <a href="#" class="btn btn-secondary">View Notes</a>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
