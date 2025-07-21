@@ -29,8 +29,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages',
+    'mindstack',  # Your main app
+    'home',
     'progress',
+    'storages',
 ]
 
 MIDDLEWARE = [
