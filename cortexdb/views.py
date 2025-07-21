@@ -1,7 +1,8 @@
 # cortexdb/views.py
 
 from django.views.generic import TemplateView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, UpdateView
+from django.urls import reverse_lazy
 from cortexdb.forms import NoteForm
 from cortexdb.models import Note
 
@@ -21,24 +22,17 @@ class ViewCortexDBNotesCreate(FormView):
 class ViewCortexDBNotes(TemplateView):
     template_name = "cortexdb_notes.html"
 
-class ViewCortexDBNotesUpdate(FormView):
-    template_name = "cortexdb_notes_update.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['notes'] = Note.objects.all()
+        return context
+
+class ViewCortexDBNotesUpdate(UpdateView):
+    model = Note
     form_class = NoteForm
-    success_url = "/cortexdb/notes/"
-
-    def get_initial(self):
-        note_id = self.kwargs.get('note_id')
-        note = Note.objects.get(note_id=note_id)
-        return {
-            'title': note.title,
-            'content': note.content
-        }
-
-    def form_valid(self, form):
-        note = form.save(commit=False)
-        note.note_id = self.kwargs.get('note_id')
-        note.save()
-        return super().form_valid(form)
+    template_name = 'cortexdb/note_form.html'
+    success_url = reverse_lazy('cortexdb:notes-list')
+    pk_url_kwarg = 'note_id'
 
 class ViewCortexDBNotesDelete(FormView):
     template_name = "cortexdb_notes_delete.html"
