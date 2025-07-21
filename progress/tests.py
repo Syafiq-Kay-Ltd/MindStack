@@ -19,7 +19,6 @@ class TestProgressLogMVP():
     def test_progress_log_model(self, user):
         from progress.models import ProgressLog
         log = ProgressLog.objects.create(
-            creator=user,
             title='Test Progress Log',
             summary='This is a test summary',
             details='Detailed information about the progress',
@@ -27,7 +26,6 @@ class TestProgressLogMVP():
             next_action=None,
             creation_date='2023-10-01',
         )
-        assert log.creator.id == 1
         assert log.title is not None
         assert log.summary is not None
         assert log.details is not None
@@ -37,7 +35,6 @@ class TestProgressLogMVP():
 
     def test_progress_log_list_view(self, client, user):
         log = ProgressLog.objects.create(
-            creator=user,
             title='Sample Progress Log',
             summary='This is a sample summary',
             details='Detailed information about the sample progress',
@@ -51,7 +48,6 @@ class TestProgressLogMVP():
     def test_progress_log_detail_view(self, client, user):
         client.force_login(user)
         log = ProgressLog.objects.create(
-            creator=user,
             title='Sample Progress Log',
             summary='This is a sample summary',
             details='Detailed information about the sample progress',
@@ -66,7 +62,6 @@ class TestProgressLogMVP():
     def test_progress_main_view_renders_latest_log(self, client, user):
         # Old log
         ProgressLog.objects.create(
-            creator=user,
             title='Another Progress Log',
             summary='This is another summary',
             details='Detailed information about another progress',
@@ -75,7 +70,6 @@ class TestProgressLogMVP():
 
         # Latest log
         latest_log = ProgressLog.objects.create(
-            creator=user,
             title='Sample Progress Log',
             summary='This is a sample summary',
             details='Detailed information about the sample progress',
@@ -102,17 +96,16 @@ class TestProgressLogMVP():
             'creation_date': timezone.now().isoformat(),  # Optional if auto-added
         }
 
-        response = client.post(reverse('progress:progress-log-form'), data=form_data)
+        response = client.post(reverse('progress:progress-log-create'), data=form_data)
         assert response.status_code == 302  # Assuming redirect on success
 
         log = ProgressLog.objects.latest('creation_date')
-        assert log.creator == user
         assert log.title == 'New Log Entry'
     
     def test_progress_log_form_edits_existing_log(self, client, user):
         client.force_login(user)
+        
         original_log = ProgressLog.objects.create(
-            creator=user,
             title='Original Log',
             summary='Original summary',
             details='Original details',
@@ -128,9 +121,11 @@ class TestProgressLogMVP():
             'creation_date': original_log.creation_date.isoformat(),
         }
 
-        url = reverse('progress:progress-log-form') + f'?id={original_log.id}'  # Or your edit URL pattern
+        initial_count = ProgressLog.objects.count()
+        url = reverse('progress:progress-log-create') + f'?id={original_log.id}'  # Or your edit URL pattern
         response = client.post(url, data=update_data)
         assert response.status_code == 302
+        assert ProgressLog.objects.count() == initial_count  # Ensures it's an edit, not a new entry
 
         original_log.refresh_from_db()
         assert original_log.title == 'Updated Title'
@@ -139,7 +134,6 @@ class TestProgressLogMVP():
     def test_progress_log_delete_view(self, client, user):
         client.force_login(user)
         log = ProgressLog.objects.create(
-            creator=user,
             title='Log to be deleted',
             summary='Summary for deletion',
             details='Details for deletion',

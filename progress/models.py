@@ -1,8 +1,8 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
-
+User = get_user_model()
 class ProgressLog(models.Model):
-    creator = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=50, null=False, blank=False)
     summary = models.TextField(null=False, blank=False)
     details = models.TextField(null=False, blank=False)
