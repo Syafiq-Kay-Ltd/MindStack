@@ -1,0 +1,9 @@
+{% load static %}
+<div class="btn-group" role="group" aria-label="CortexDB Navigation">
+    <ul class="nav">
+        <button type="button" class="btn btn-light"><a href="{% url 'cortexdb:index' %}">Home</a></button>
+        <button type="button" class="btn btn-light"><a href="{% url 'cortexdb:notes-create' %}">Create Note</a></button>
+        <button type="button" class="btn btn-light"><a href="{% url 'cortexdb:notes-list' %}">View Notes</a></button>
+    </ul>
+</div>
+
