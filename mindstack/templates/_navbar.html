@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
     <div class="container">
         <!-- Navbar Brand -->
-        <a class="navbar-brand" href="{% url 'progress:progress-main' %}"><i class="fa-solid fa-list-check"></i></a>
+        <a class="navbar-brand" href="{% url 'home:home' %}"><i class="fa-solid fa-house"></i> MindStack Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,7 +17,10 @@
         <!-- Navbar Links to be added here -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="navbar-nav ml-auto">
-                <a class="nav-link disabled" aria-current="page" href="{% url 'progress:progress-main' %}"><i class="fa-solid fa-blog"></i> progress log</a>
+                <a class="nav-link" href="{% url 'cortexdb:index' %}"><i class="fa-solid fa-database"></i> CortexDB</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a class="nav-link" aria-current="page" href="{% url 'progress:progress-main' %}"><i class="fa-solid fa-blog"></i> progress log</a>
             </div>
         </div>
     </div>

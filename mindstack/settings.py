@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'mindstack',  # Your main app
     'home',
     'progress',
+    'cortexdb',
     'storages',
 ]
 
