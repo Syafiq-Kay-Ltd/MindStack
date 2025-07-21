@@ -8,19 +8,21 @@ def test_pytest_works():
 
 # test progress-mainpage renders correctly
 # Constant for the progress main URL name
-PROGRESS_MAIN_URL_NAME = 'progress:progress-main'
-# test progress-mainpage renders correctly
-def test_progress_main_renders(client):
-    response = client.get(reverse(PROGRESS_MAIN_URL_NAME))
-    assert response.status_code == 200
+@pytest.mark.django_db
+class TestProgressLogInitialisation:
+    PROGRESS_MAIN_URL_NAME = 'progress:progress-main'
 
-# test that the URL resolver can resolve the progress main URL
-def test_progress_main_url_resolves():
-    resolver = get_resolver()
-    try:
-        resolver.resolve(reverse(PROGRESS_MAIN_URL_NAME))
-    except Resolver404:
-        pytest.fail(f"URL '{PROGRESS_MAIN_URL_NAME}' could not be resolved.")
-    else:
-        assert True, f"URL '{PROGRESS_MAIN_URL_NAME}' resolved successfully."
+    def test_progress_main_renders(self, client):
+        response = client.get(reverse(self.PROGRESS_MAIN_URL_NAME))
+        assert response.status_code == 200
+
+    # test that the URL resolver can resolve the progress main URL
+    def test_progress_main_url_resolves(self):
+        resolver = get_resolver()
+        try:
+            resolver.resolve(reverse(self.PROGRESS_MAIN_URL_NAME))
+        except Resolver404:
+            pytest.fail(f"URL '{self.PROGRESS_MAIN_URL_NAME}' could not be resolved.")
+        else:
+            assert True, f"URL '{self.PROGRESS_MAIN_URL_NAME}' resolved successfully."
 

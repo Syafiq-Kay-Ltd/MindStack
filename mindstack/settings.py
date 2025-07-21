@@ -125,15 +125,35 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-# --- static files configuration for Azure Blob Storage ---
+# --- static files configuration ---
 AZURE_ACCOUNT_NAME = os.environ.get("AZURE_ACCOUNT_NAME")
 AZURE_ACCOUNT_KEY = os.environ.get("AZURE_ACCOUNT_KEY")
-AZURE_CONTAINER = os.environ.get("AZURE_CONTAINER", "static")
-STATIC_LOCATION = AZURE_CONTAINER
-STATIC_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{STATIC_LOCATION}/"
-STATICFILES_STORAGE = "storages.backends.azure_storage.AzureStorage"
-AZURE_CUSTOM_DOMAIN = f"{AZURE_ACCOUNT_NAME}.blob.core.windows.net"
-AZURE_SSL = True
+
+if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY:
+    # Azure Blob Storage configuration
+    AZURE_CONTAINER = os.environ.get("AZURE_CONTAINER", "static")
+    STATIC_LOCATION = AZURE_CONTAINER
+    STATIC_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{STATIC_LOCATION}/"
+    STORAGES = {
+        'default': {
+            'BACKEND': 'storages.backends.azure_storage.AzureStorage',
+            'ACCOUNT_NAME': AZURE_ACCOUNT_NAME,
+            'ACCOUNT_KEY': AZURE_ACCOUNT_KEY,
+            'AZURE_CONTAINER': AZURE_CONTAINER,
+            'URL': STATIC_URL,
+        }
+    }
+    AZURE_CUSTOM_DOMAIN = f"{AZURE_ACCOUNT_NAME}.blob.core.windows.net"
+    AZURE_SSL = True
+else:
+    # Local static files configuration
+    STATIC_URL = '/static/'
+    STORAGES = {
+        'default': {
+            'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        }
+    }
+
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
