@@ -1,4 +1,5 @@
 {% extends "progress_base.html" %}
+{% load static %}
 
 {% block title %}MindStack | Homepage{% endblock %}
 
@@ -7,50 +8,95 @@
 {% endblock %}
 
 {% block navbar_text %}
-<h1 class="mt-5">Welcome to MindStack</h1>
 {% endblock %}
 
 {% block progress_header %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2>Progress Overview</h2>
-                <p class="text-muted">Track your learning and knowledge management journey</p>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Progress Overview</h2>
+            <p class="text-muted">Track your learning and knowledge management journey</p>
         </div>
     </div>
+</div>
 {% endblock progress_header %}
 
 {% block progress_content %}
-    <!-- top module: brief introduction to MindStack -->
-    <div class="row mt-5 mb-5">
-        <div class="col-12 text-center">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">MindStack Overview</h2>
-                </div>
-                <div class="card-body">
-                    <p class="alert alert-danger">in progress</p>
-                    <p class="card-text">MindStack is designed to help you organize your thoughts and knowledge in a structured way, inspired by the principles of Zettelkasten and test-driven development.</p>
-                    <a href="#" class="btn btn-primary">Learn More</a>
-                </div>
+<!-- top module: brief introduction to MindStack -->
+<div class="row mt-5 mb-5">
+    <div class="col-12 text-center">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">MindStack Overview</h2>
+            </div>
+            <div class="card-body">
+                <p class="alert alert-danger">in progress</p>
+                <p class="card-text">MindStack is designed to help you organize your thoughts and knowledge in a structured way, inspired by the principles of Zettelkasten and test-driven development.</p>
+                <a href="#" class="btn btn-primary">Learn More</a>
             </div>
         </div>
     </div>
-    <!-- main module: progress journal and docs/help -->
-    <div class="row mt-5 mb-5">
-        <div class="col-md-6 text-center">
-            {% block progress_journal %}
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">{% if progresslog %}{{ progresslog.title }}{% else %}Progress Journal{% endif %}</h2>
-                </div>
-                <div class="card-body">
-                    <p>{% if progresslog %}{{ progresslog.summary }}{% else %}No progress log available.{% endif %}</p>
-                </div>
-                <div class="card-footer">
-                    <a href="{% url 'progress:progress-log-list' %}" class="btn btn-primary">View all log</a>
-                </div>
+</div>
+<!-- main module: progress journal and docs/help -->
+<div class="row mt-5 mb-5">
+    <div class="col-md-6 text-center">
+        {% block progress_journal %}
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">{% if progresslog %}{{ progresslog.title }}{% else %}Progress Journal{% endif %}</h2>
+            </div>
+            <div class="card-body">
+                <p>{% if progresslog %}{{ progresslog.summary }}{% else %}No progress log available.{% endif %}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'progress:progress-log-list' %}" class="btn btn-primary">View all log</a>
+                <a href="{% url 'progress:progress-log-create' %}" class="btn btn-secondary">Create New Log</a>
+                {% if progresslog %}
+                <a href="{% url 'progress:progress-log-update' progresslog.pk %}" class="btn btn-secondary">Update Log</a>
+                <a href="{% url 'progress:progress-log-delete' progresslog.pk %}" class="btn btn-danger">Delete Log</a>
+                {% endif %}
+                <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 border-bottom shadow-sm">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="{% url 'progress:progress-main' %}">
+                            <i class="fa-solid fa-chart-line me-1"></i> Progress
+                        </a>
+                
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#progressNavbar" aria-controls="progressNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                
+                        <div class="collapse navbar-collapse" id="progressNavbar">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.resolver_match.url_name == 'progress-main' %}active{% endif %}" href="{% url 'progress:progress-main' %}">
+                                        <i class="fa-solid fa-house me-1"></i> Home
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.resolver_match.url_name == 'progress-log-list' %}active{% endif %}" href="{% url 'progress:progress-log-list' %}">
+                                        <i class="fa-solid fa-list me-1"></i> All Logs
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.resolver_match.url_name == 'progress-log-create' %}active{% endif %}" href="{% url 'progress:progress-log-create' %}">
+                                        <i class="fa-solid fa-plus me-1"></i> New Log
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.resolver_match.url_name == 'progress-log-form' %}active{% endif %}" href="{% url 'progress:progress-log-form' %}">
+                                        <i class="fa-regular fa-pen-to-square me-1"></i> Form (Create/Edit via ?id)
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" tabindex="-1" aria-disabled="true">
+                                        <i class="fa-solid fa-trash me-1"></i> Delete (use log/&lt;id&gt;/delete/)
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
             </div>
             {% endblock %}
         </div>
