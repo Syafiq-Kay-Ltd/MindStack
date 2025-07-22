@@ -1,15 +1,23 @@
-# cortexdb/views.py
+# cortexdb/views_crud.py
 
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView, UpdateView
 from django.urls import reverse_lazy
 from cortexdb.forms import NoteForm
 from cortexdb.models import Note
+from django.shortcuts import render 
 
-class CortexDBIndexView(TemplateView):
-    template_name = "cortexdb_index.html"
+# CortexDB Landing Page
+def CortexDBIndexView(request):
+    return render(
+        request,
+        'cortexdb_index.html',
+        {
+            'context': 'context'
+        }
+    )
 
-# CortexDB Notes - CRUD Views
+# Notes
 class ViewCortexDBNotesCreate(FormView):
     template_name = "cortexdb_notes_create.html"
     form_class = NoteForm
