@@ -27,12 +27,14 @@
 		{% include '_navbar.html' %}
 
 		<!-- Main content area -->
-		{% block content %}
-			<!-- insert child content here -->
-		{% endblock %}
+		<main class="flex-fill d-flex pt-5 mt-5 mb-5">
+			<div class="container my-auto mx-auto">
+				{% block content %}{% endblock %}
+			</div>
+		</main>
 
 		<!-- Footer -->
-		<footer class="container-fluid bg-dark text-white text-center p-4 fixed-bottom">
+		<footer class="container-fluid bg-dark text-white text-center p-4">
 			<!-- Copyright -->
 			<div class="text-center p-3">
 				<p>Made with Django, <i class="fa-brands fa-python"></i> Python, <i class="fa-brands fa-bootstrap"></i> Bootstrap, <i class="fa-brands fa-font-awesome"></i> Font Awesome, and <i class="fa-brands fa-docker"></i> Docker. More to come ...</p>

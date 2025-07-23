@@ -1,8 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'cortexdb_main.html' %}
 
-{% block content %}
-<div class="jumbotron p-5 mb-4 bg-light rounded-3">
-    {% include '_cortexdb_navbar.html' %}
+{% block cortexdb_content %}
+<div class="container">
     <h1>Update Note</h1>
     <form method="post" action="{% url 'cortexdb:notes-update' note.note_id %}">
         {% csrf_token %}
