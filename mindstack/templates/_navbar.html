@@ -2,7 +2,7 @@
  {% load static %}
 
 <!-- navbar -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	<div class="container">
 		<!-- Navbar Brand -->
 		<a class="navbar-brand" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a>
@@ -18,7 +18,7 @@
 		<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 			<!-- main navigation links -->
 			<div class="navbar-navd">
-				<a class="nav-link" href="{% url 'cortexdb:index' %}"><i class="fa-solid fa-database"></i> CortexDB</a>
+				<a class="nav-link" href="{% url 'cortexdb:main' %}"><i class="fa-solid fa-database"></i> CortexDB</a>
 			</div>
 			<div class="navbar-nav">
 				<a class="nav-link" aria-current="page" href="{% url 'progress:progress-main' %}"><i class="fa-solid fa-blog"></i> progress log</a>

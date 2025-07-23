@@ -1,23 +1,23 @@
-{% extends 'cortexdb_base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-{% include "_cortexdb_navbar.html" %}
-<div class="jumbotron p-5 mb-4 bg-light rounded-3">
-    <h1>Create New Note</h1>
-    <form method="post" action="{% url 'cortexdb:notes-create' %}">
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        <div class="form-group">
-            {{ form.title.label_tag }}
-            {{ form.title }}
-            {{ form.title.errors }}
-        </div>
-        <div class="form-group">
-            {{ form.content.label_tag }}
-            {{ form.content }}
-            {{ form.content.errors }}
-        </div>
-        <button type="submit" class="btn btn-primary">Create Note</button>
-    </form>
-</div>
+    {% include '_cortexdb_navbar.html' %}
+    <div class="card p-5 mb-4 bg-light rounded-3">
+        <h1>Create New Note</h1>
+        <form method="post" action="{% url 'cortexdb:notes-create' %}">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="form-group">
+                {{ form.title.label_tag }}
+                {{ form.title }}
+                {{ form.title.errors }}
+            </div>
+            <div class="form-group">
+                {{ form.content.label_tag }}
+                {{ form.content }}
+                {{ form.content.errors }}
+            </div>
+            <button type="submit" class="btn btn-primary">Create Note</button>
+        </form>
+    </div>
 {% endblock %}
