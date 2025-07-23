@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
+    <br>
+    <div class="container">
+        <h1>List of all Notes</h1>
+    </div>
     {% include '_cortexdb_navbar.html' %}
-    <div class="card p-5 mb-4 bg-light rounded-3">
-        <h1>Create New Note</h1>
+    <div class="container">
+        <h2>Create New Note</h2>
         <form method="post" action="{% url 'cortexdb:notes-create' %}">
             {% csrf_token %}
             {{ form.non_field_errors }}
@@ -20,4 +25,7 @@
             <button type="submit" class="btn btn-primary">Create Note</button>
         </form>
     </div>
+</div>
+<div class="container">
+</div>
 {% endblock %}

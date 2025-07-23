@@ -1,27 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="jumbotron p-5 mb-4 bg-light rounded-3">
-    {% include '_cortexdb_navbar.html' %}
-    <h1>Notes List</h1>
+<div class="jumbotron">
     <div class="container">
-        <ul class="list-group list-group-flush">
-            {% if notes %}
-            {% for note in notes %}
-                    <div class="card mb-3">
-                        <h5 class="card-header">{{ note.title }}</h5>
-                        <div class="card-body">
-                            <p class="card-text">{{ note.content }}</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last edited: {{ note.last_edited }}</small>
-                        </div>
-                    </div>
-            {% empty %}
-                <li>No notes available.</li>
-            {% endfor %}
-            {% endif %}
-        </ul>
+        <h1>List of all Notes</h1>
     </div>
+    <div class="container">
+        {% include '_cortexdb_navbar.html' %}
+    </div>
+</div>
+<div class="container">
+  {% for row in note_rows %}
+    <div class="row">
+      {% for note in row %}
+        {% if note %}
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <h5 class="card-header">{{ note.title }}</h5>
+            <div class="card-body">
+              <p class="card-text">{{ note.content }}</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Last edited: {{ note.last_edited }}</small>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
 </div>
 {% endblock %}
