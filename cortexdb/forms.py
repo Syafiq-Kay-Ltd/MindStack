@@ -1,11 +1,11 @@
 # cortexdb/forms.py
 
 from django import forms
-from cortexdb.models import note
+from cortexdb.models import Note
 
 class NoteForm(forms.ModelForm):
     class Meta:
-        model = note
+        model = Note
         fields = ['title', 'content']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
