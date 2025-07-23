@@ -1,12 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'cortexdb_main.html' %}
 
-{% block content %}
+{% block cortexdb_content %}
 <div class="container">
-    <br>
-    <div class="container">
-        <h1>List of all Notes</h1>
-    </div>
-    {% include '_cortexdb_navbar.html' %}
     <div class="container">
         <h2>Create New Note</h2>
         <form method="post" action="{% url 'cortexdb:notes-create' %}">
@@ -22,7 +17,13 @@
                 {{ form.content }}
                 {{ form.content.errors }}
             </div>
-            <button type="submit" class="btn btn-primary">Create Note</button>
+            <button type="submit" class="btn btn-primary">
+                {% if object %}Update{% else %}Create{% endif %}
+            </button>
+            <a href="{% url 'cortexdb:notes-list' %}" class="btn btn-secondary">Cancel</a>
+            {% if object %}
+                <a href="{% url 'cortexdb:notes-delete' object.pk %}" class="btn btn-danger">Delete</a>
+            {% endif %}
         </form>
     </div>
 </div>

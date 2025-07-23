@@ -1,12 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'cortexdb_base.html' %}
 
 {% block content %}
     <div class="jumbotron p-5 mb-4 bg-light rounded-3">
         <h1>Welcome to CortexDB</h1>
         <p>This is the main page of CortexDB.</p>
         <p>Use the navigation menu to explore the database functionalities.</p>
-    </div>
-    <div>
         {% include '_cortexdb_navbar.html' %}
+    </div>
+    <div class="container">
+        {% block cortexdb_content %}
+        {% endblock %}
     </div>
 {% endblock %}

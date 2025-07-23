@@ -1,8 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'cortexdb_main.html' %}
 
-{% block content %}
-    {% include '_cortexdb_navbar.html' %}
-    <div class="container p-5 mb-4 bg-light rounded-3">
+{% block cortexdb_content %}
+    <div class="container">
         <div class="card">
             <div class="card-header">
                 <h2 class="card-title">{{ note.title }}</h2>
@@ -14,7 +13,8 @@
                 <!-- to insert connections to other notes -->
             </div>
             <div class="card-footer">
-                {% include '_cortexdb_note_actions.html' %}
+                <a href="{% url 'cortexdb:notes-detail' note.note_id %}" class="btn btn-sm btn-outline-primary">View</a>
+                <a href="{% url 'cortexdb:notes-update' note.note_id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
             </div>
         </div>
     </div>

@@ -14,9 +14,9 @@ urlpatterns = [
     path('notes/create/', ViewNotesCreate.as_view(), name='notes-create'),
     ## notes READ
     path('notes/', ViewNotesList.as_view(), name='notes-list'),
-    path('notes/<int:note_id>', ViewNotesDetail.as_view(), name='notes-detail'),
+    path('notes/<int:pk>', ViewNotesDetail.as_view(), name='notes-detail'),
     ## notes UPDATE
-    path('notes/update/<int:note_id>/', ViewNotesUpdate.as_view(), name='notes-update'),
+    path('notes/update/<int:pk>/', ViewNotesUpdate.as_view(), name='notes-update'),
     ## notes DELETE
-    path('notes/delete/<int:note_id>', ViewNotesDelete.as_view(), name='notes-delete')
+    path('notes/delete/<int:pk>/', ViewNotesDelete.as_view(), name='notes-delete')
 ]
