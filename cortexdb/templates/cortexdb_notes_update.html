@@ -1,24 +1,24 @@
-<!-- cortexdb_notes_update.html -->
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-{% include "_cortexdb_navbar.html" %}
 <div class="jumbotron p-5 mb-4 bg-light rounded-3">
+    {% include '_cortexdb_navbar.html' %}
     <h1>Update Note</h1>
-    <form method="post" action="{% url 'cortexdb:notes-update' note.id %}">
+    <form method="post" action="{% url 'cortexdb:notes-update' note.note_id %}">
         {% csrf_token %}
         {{ form.non_field_errors }}
         <div class="form-group">
-        {{ form.title.label_tag }}
-        {{ form.title }}
-        {{ form.title.errors }}
-    </div>
-    <div class="form-group">
-        {{ form.content.label_tag }}
-        {{ form.content }}
-        {{ form.content.errors }}
-    </div>
-    <button type="submit" class="btn btn-primary">Update Note</button>
-</form>
+            {{ form.title.label_tag }}
+            {{ form.title }}
+            {{ form.title.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.content.label_tag }}
+            {{ form.content }}
+            {{ form.content.errors }}
+        </div>
+        <button type="submit" class="btn btn-primary">Update Note</button>
+        <button class="btn btn-danger"><a href="{{ url 'cortexdb:notes-detail' note.note_id }}">Cancel</a></button>
+    </form>
 </div>
 {% endblock %}

@@ -1,26 +1,68 @@
 {% extends "base.html" %}
 
+{% block title %}
+    Home Page
+{% endblock %}
+
 {% block content %}
-    <div style="max-width: 700px; margin: 0 auto; padding: 2rem;">
-        <h1>
-            <i class="fas fa-home" style="color: #007bff; margin-right: 10px;"></i>
-            {{ title }}
-        </h1>
-        <p>
-            Welcome to the home page! This application is designed to help you manage your tasks, organize your thoughts, and boost your productivity. 
-            <i class="fas fa-lightbulb" style="color: #ffc107;"></i>
-        </p>
-        <p>
-            Use the navigation bar above to explore different sections of the site. You can add new tasks, review your progress, and customize your experience to suit your workflow. 
-            <i class="fas fa-tasks" style="color: #28a745;"></i>
-        </p>
-        <p>
-            If you are new here, feel free to check out the help section for tips on getting started. Our platform is built with simplicity and efficiency in mind, so you can focus on what matters most. 
-            <i class="fas fa-user-friends" style="color: #17a2b8;"></i>
-        </p>
-        <p>
-            Thank you for choosing our app. We hope it helps you achieve your goals and stay organized every day!
-            <i class="fas fa-smile" style="color: #fd7e14;"></i>
-        </p>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="jumbotron bg-light text-dark">
+            <div class="container">
+                <h2 class="display-4 text-center">{{ title|default:"Home" }}</h2>
+                <p class="lead">Use the navigation bar above to explore different sections of the site. You can add new tasks, review your progress, and customize your experience to suit your workflow. 
+                    <i class="fas fa-tasks" style="color: #28a745;"></i> If you are new here, feel free to check out the help section for tips on getting started. Our platform is built with simplicity and efficiency in mind, so you can focus on what matters most. 
+                    <i class="fas fa-user-friends" style="color: #17a2b8;"></i>Thank you for choosing our app. We hope it helps you achieve your goals and stay organized every day!
+                    <i class="fas fa-smile" style="color: #fd7e14;"></i>
+                </p>
+            </div>
+        </div>
+    </div> 
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h2 class="card-title text-center justify-content-center">A project</h2>
+                </div>
+                <div class="card-body text-center justify-content-center">
+                    <p class="card-text">this is a card that will host a project!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h2 class="card-title text-center justify-content-center">A project</h2>
+                </div>
+                <div class="card-body text-center justify-content-center">
+                    <p class="card-text">this is a card that will host a project!</p>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h2 class="card-title text-center justify-content-center">A project</h2>
+                </div>
+                <div class="card-body text-center justify-content-center">
+                    <p class="card-text">this is a card that will host a project!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h2 class="card-title text-center justify-content-center">A project</h2>
+                </div>
+                <div class="card-body text-center justify-content-center">
+                    <p class="card-text">this is a card that will host a project!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

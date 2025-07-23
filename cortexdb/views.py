@@ -1,44 +1,51 @@
 # cortexdb/views.py
 
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import FormView, UpdateView
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from cortexdb.forms import NoteForm
 from cortexdb.models import Note
 
-class CortexDBIndexView(TemplateView):
-    template_name = "cortexdb_index.html"
 
-# CortexDB Notes - CRUD Views
-class ViewCortexDBNotesCreate(FormView):
+# CortexDB Main Page
+class ViewMain(TemplateView):
+    template_name = "cortexdb_main.html"
+
+# CortexDB Notes CRUD
+## CortexDB Notes CREATE
+class ViewNotesCreate(FormView):
     template_name = "cortexdb_notes_create.html"
     form_class = NoteForm
-    success_url = "/cortexdb/notes/"
+    pk_url_kwarg = 'note_id'
+    success_url = reverse_lazy('cortexdb:notes-list')
 
     def form_valid(self, form):
-        note = form.save()
+        form.save()
         return super().form_valid(form)
 
-class ViewCortexDBNotes(TemplateView):
-    template_name = "cortexdb_notes.html"
+## CortexDB Notes READ
+### ... list
+class ViewNotesList(ListView):
+    model = Note
+    template_name = "cortexdb_notes_list.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['notes'] = Note.objects.all()
-        return context
+class ViewNotesDetail(DetailView):
+    model = Note
+    template_name = "cortexdb_notes_detail.html"
 
-class ViewCortexDBNotesUpdate(UpdateView):
+class ViewNotesUpdate(UpdateView):
     model = Note
     form_class = NoteForm
-    template_name = 'cortexdb/note_form.html'
+    template_name = 'cortexdb_notes_create.html'
     success_url = reverse_lazy('cortexdb:notes-list')
-    pk_url_kwarg = 'note_id'
 
-class ViewCortexDBNotesDelete(FormView):
+class ViewNotesDelete(FormView):
     template_name = "cortexdb_notes_delete.html"
-    success_url = "/cortexdb/notes/"
+    success_url = reverse_lazy('cortexdb:notes-list')
+    form_class = NoteForm
 
     def post(self, request, *args, **kwargs):
         note_id = self.kwargs.get('note_id')
-        Note.objects.filter(note_id=note_id).delete()
+        Note.objects.filter(id=note_id).delete()
         return super().post(request, *args, **kwargs)
+
