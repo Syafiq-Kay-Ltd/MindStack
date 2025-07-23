@@ -1,6 +1,6 @@
 from django.db import models
 
-class Note(models.Model):
+class note(models.Model):
     note_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     content = models.TextField()

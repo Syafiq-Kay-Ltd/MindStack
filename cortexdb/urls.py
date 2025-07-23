@@ -1,12 +1,17 @@
 # cortexdb/urls.py
 
 from django.urls import path
-from . import views
+from .views_crud import (
+    CortexDBIndexView,
+    ViewCortexDBNotes,
+    ViewCortexDBNotesCreate,
+    ViewCortexDBNotesUpdate,
+)
 
 app_name = 'cortexdb'
 urlpatterns = [
-    path('', views.CortexDBIndexView.as_view(), name='index'),
-    path('notes/', views.ViewCortexDBNotes.as_view(), name='notes-list'),
-    path('notes/create/', views.ViewCortexDBNotesCreate.as_view(), name='notes-create'),
-    path('notes/update/<int:note_id>/', views.ViewCortexDBNotesUpdate.as_view(), name='notes-update'),
+    path('', CortexDBIndexView, name='index'),
+    path('notes/', ViewCortexDBNotes.as_view(), name='notes-list'),
+    path('notes/create/', ViewCortexDBNotesCreate.as_view(), name='notes-create'),
+    path('notes/update/<int:note_id>/', ViewCortexDBNotesUpdate.as_view(), name='notes-update'),
 ]
