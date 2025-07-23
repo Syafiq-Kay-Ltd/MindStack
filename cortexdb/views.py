@@ -1,5 +1,5 @@
 # cortexdb/views.py
-
+import django
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import FormView, UpdateView
 from django.urls import reverse, reverse_lazy
