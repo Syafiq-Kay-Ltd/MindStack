@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="jumbotron">
+<div class="container">
     <div class="container">
         <h1>List of all Notes</h1>
     </div>
-    <div class="container">
-        {% include '_cortexdb_navbar.html' %}
-    </div>
+      {% include '_cortexdb_navbar.html' %}
 </div>
 <div class="container">
   {% for row in note_rows %}
@@ -15,16 +13,20 @@
       {% for note in row %}
         {% if note %}
         <div class="col-md-4">
-          <div class="card mb-3">
-            <h5 class="card-header">{{ note.title }}</h5>
-            <div class="card-body">
-              <p class="card-text">{{ note.content }}</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last edited: {{ note.last_edited }}</small>
-            </div>
-          </div>
+      <div class="card mb-3">
+        <h5 class="card-header">{{ note.title }}</h5>
+        <div class="card-body">
+          <p class="card-text">{{ note.content }}</p>
         </div>
+      <div class="card-footer d-flex justify-content-between align-items-center">
+        <small class="text-muted">Last edited: {{ note.last_edited }}</small>
+        <div>
+          <a href="{% url 'cortexdb:notes-detail' note.note_id %}" class="btn btn-sm btn-outline-primary">View</a>
+          <a href="{% url 'cortexdb:notes-update' note.note_id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
         {% endif %}
       {% endfor %}
     </div>
