@@ -30,6 +30,24 @@ class CortexdbViewsTest(TestCase):
     def test_notes_update_view(self):
         self.check_view('cortexdb:notes-update', 'cortexdb_notes_form.html', kwargs={'pk': self.note.pk})
 
+    def test_notes_update_does_not_create_new_entry(self):
+        # Count notes before update
+        initial_count = Note.objects.count()
+        # Update the note via POST
+        response = self.client.post(reverse('cortexdb:notes-update', kwargs={'pk': self.note.pk}), {
+            'title': 'Updated Title',
+            'content': 'Updated content.'
+        })
+        self.assertEqual(response.status_code, 302)
+        # Count notes after update
+        after_count = Note.objects.count()
+        # Should not create a new entry
+        self.assertEqual(initial_count, after_count)
+        # The note should be updated
+        updated_note = Note.objects.get(pk=self.note.pk)
+        self.assertEqual(updated_note.title, 'Updated Title')
+        self.assertEqual(updated_note.content, 'Updated content.')
+
     def test_notes_delete_view(self):
         self.check_view('cortexdb:notes-delete', 'cortexdb_notes_delete.html', kwargs={'pk': self.note.pk})
 
