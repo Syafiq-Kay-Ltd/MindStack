@@ -1,7 +1,7 @@
 import pytest
 from django.test import TestCase
 from django.urls import reverse, NoReverseMatch, resolve
-from cortexdb.models import Note
+from .models import Note
 from cortexdb import views
 
 # VIEWS
