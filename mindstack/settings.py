@@ -129,41 +129,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 # --- static files configuration ---
-AZURE_ACCOUNT_NAME = os.getenv("AZURE_ACCOUNT_NAME")
-AZURE_ACCOUNT_KEY = os.getenv("AZURE_ACCOUNT_KEY")
-AZURE_STATIC_CONTAINER = os.getenv("AZURE_STATIC_CONTAINER", "static")
+AZURE_ACCOUNT_NAME = os.environ.get("AZURE_ACCOUNT_NAME")
+AZURE_ACCOUNT_KEY = os.environ.get("AZURE_ACCOUNT_KEY")
+AZURE_CONTAINER = os.environ.get("AZURE_CONTAINER", "static")
+STATIC_LOCATION = AZURE_CONTAINER
+STATIC_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{STATIC_LOCATION}/"
+STATICFILES_STORAGE = "storages.backends.azure_storage.AzureStorage"
 AZURE_CUSTOM_DOMAIN = f"{AZURE_ACCOUNT_NAME}.blob.core.windows.net"
 AZURE_SSL = True
-
-if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY:
-    STATIC_URL = f"https://{AZURE_CUSTOM_DOMAIN}/{AZURE_STATIC_CONTAINER}/"
-
-    STORAGES = {
-        "default": {
-            "BACKEND": "storages.backends.azure_storage.AzureStorage",
-            "ACCOUNT_NAME": AZURE_ACCOUNT_NAME,
-            "ACCOUNT_KEY": AZURE_ACCOUNT_KEY,
-            "AZURE_CONTAINER": os.getenv("AZURE_MEDIA_CONTAINER", "media"),
-            "URL": f"https://{AZURE_CUSTOM_DOMAIN}/{os.getenv('AZURE_MEDIA_CONTAINER', 'media')}/",
-        },
-        "staticfiles": {
-            "BACKEND": "storages.backends.azure_storage.AzureStorage",
-            "ACCOUNT_NAME": AZURE_ACCOUNT_NAME,
-            "ACCOUNT_KEY": AZURE_ACCOUNT_KEY,
-            "AZURE_CONTAINER": AZURE_STATIC_CONTAINER,
-            "URL": STATIC_URL,
-        },
-    }
-else:
-    STATIC_URL = "/static/"
-    STORAGES = {
-        "default": {
-            "BACKEND": "django.core.files.storage.FileSystemStorage",
-        },
-        "staticfiles": {
-            "BACKEND": "django.core.files.storage.FileSystemStorage",
-        },
-    }
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
