@@ -3,8 +3,8 @@
 {% block cortexdb_content %}
 <div class="container">
     <div class="container">
-        <h2>Create New Note</h2>
-        <form method="post" action="{% url 'cortexdb:notes-create' %}">
+        <h2>{% if object %}Edit Note{% else %}Create New Note{% endif %}</h2>
+        <form method="post" action="{% if object %}{% url 'cortexdb:notes-update' object.pk %}{% else %}{% url 'cortexdb:notes-create' %}{% endif %}">
             {% csrf_token %}
             {{ form.non_field_errors }}
             <div class="form-group">

@@ -1,61 +1,62 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    
-	<meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-	<title>{% block title %}{{ title|default:'mindstack' }}{% endblock %}</title>
-    
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link rel="icon" href="{% static 'favicon.ico' %}">
+	<title>
+		{% block title %}
+		{{ title|default:'mindstack' }}
+		{% endblock %}
+	</title>
+	<!-- CSS files -->
     {% block extra_css %}
-    	<!-- insert child css here -->
+    <link rel="stylesheet" href="{% static 'css/cover.css' %}">
     {% endblock %}
-    
     <!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-honoka@4.4.0/dist/css/bootstrap.min.css">
-	
     <!-- Add Font Awesome CDN for icons to work -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6b+...your-integrity-hash..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
 </head>
-
-<body>
-
-	
-	<main>
+<body class="text-center">
+	<div class="cover-container d-flex h-100 mx-auto flex-column">
 		<!-- Navbar -->
-		{% include '_navbar.html' %}
-
+		<header class="masthead mb-auto">
+			<div class="inner">
+				<nav class="nav nav-masthead justify-content-center navbar navbar-expand-sm bg-dark navbar-dark">
+					<a class="navbar-link text-white" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a>
+					<a class="nav-link text-white" href="{% url 'cortexdb:main' %}"><i class="fa-solid fa-database"></i> CortexDB</a>
+					<a class="nav-link text-white" aria-current="page" href="{% url 'progress:progress-main' %}"><i class="fa-solid fa-blog"></i> progress log</a>
+				</nav>
+			</div>
+		</header>
 		<!-- Main content area -->
-		<main class="flex-fill d-flex pt-5 mt-5 mb-5">
+		<main class="{% block main_class %}flex-fill d-flex min-vh-100 justify-content-center align-items-center bg-dark text-white{% endblock %}" style="{% block main_style %}margin:0; padding:0;{% endblock %}">
 			<div class="container my-auto mx-auto">
-				{% block content %}{% endblock %}
+				{% block content %}
+				<!-- insert child content here -->
+				{% endblock %}
+				{% block extra_content %}
+				<!-- insert child extra content here -->
+				{% endblock %}
 			</div>
 		</main>
-
 		<!-- Footer -->
-		<footer class="container-fluid bg-dark text-white text-center p-4">
-			<!-- Copyright -->
-			<div class="text-center p-3">
-				<p>Made with Django, <i class="fa-brands fa-python"></i> Python, <i class="fa-brands fa-bootstrap"></i> Bootstrap, <i class="fa-brands fa-font-awesome"></i> Font Awesome, and <i class="fa-brands fa-docker"></i> Docker. More to come ...</p>
-				<p>
-					<i class="fa-solid fa-copyright"></i> {% now "Y" %} Syafiq Kay{% comment %}, MPharm, MRPharmS, GDL, CMHP{% endcomment %} |
-					<a class="text-white text-decoration-none" href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT License</a>
-				</p>
+		<footer class="mastfoot mt-auto bg-dark text-white text-center p-4">
+			<div class="inner">
+				{% include "_footer.html" %}
 			</div>
 		</footer>
-    </main>
-    
+    </div>
     <!-- extra js -->
-    {% block extra_js %}
-    	<!-- insert child js script here -->
-    {% endblock %}
-    
-   
-    <!-- JS files for Bootstrap 4 -->
+	{% block extra_js %}
+	<!-- insert child js script here -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap-honoka@4.4.0/dist/js/bootstrap.min.js"></script>
-        
+	{% endblock %}
 </body>
 </html>
