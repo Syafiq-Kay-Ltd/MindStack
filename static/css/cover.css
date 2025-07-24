@@ -39,8 +39,8 @@ body {
   -webkit-box-pack: center;
   justify-content: center;
   color: #3f5865ff;
-  text-shadow: 0 .05rem .1rem rgba(193, 165, 169, 1);
-  box-shadow: inset 0 0 5rem rgba(193, 165, 169, 1);
+  /* text-shadow: 0 .05rem .1rem rgba(193, 165, 169, 1);
+  box-shadow: inset 0 0 5rem rgba(193, 165, 169, 1); */
 }
 
 .cover-container {
