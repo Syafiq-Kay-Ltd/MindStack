@@ -84,10 +84,13 @@ class ProgressLogFormView(ModelFormMixin, FormView):
     template_name = "progress_log_form.html"
 
     def get_object(self):
-        id = self.request.GET.get("id")
-        if id:
-            return ProgressLog.objects.filter(id=id, creator=self.request.user).first()
-        return None
+        if not hasattr(self, "object"):
+            id = self.request.GET.get("id")
+            if id:
+                self.object = ProgressLog.objects.filter(id=id, creator=self.request.user).first()
+            else:
+                self.object = None
+        return self.object
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -102,4 +105,5 @@ class ProgressLogFormView(ModelFormMixin, FormView):
         if not log.pk:
             log.creation_date = now()
         log.save()
+        self.object = log
         return redirect("progress:progress-log-detail", pk=log.pk)

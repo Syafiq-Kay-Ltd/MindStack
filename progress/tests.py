@@ -1,11 +1,62 @@
-# progress/tests.py
-
+# --- Template Token Verification Tests ---
 import pytest
+import re
 from django.urls import reverse
 from django.utils import timezone
 from .models import ProgressLog
+from home.models import TemplateTokenLog
+
+class TestViewTemplateTokenVerification:
+    """
+    Tests that views render the correct HTML templates and use the expected tokens from the TemplateTokenLog DB.
+    """
+
+    view_template_map = {
+        'progress:progress-main': 'progress_mainpage.html',
+        'progress:progress-log-list': 'progress_log_list.html',
+        'progress:progress-log-detail': 'progress_log_detail.html',
+        # Add more view name to template mappings as needed
+    }
+
+    def get_expected_token(self, template_name):
+        try:
+            entry = TemplateTokenLog.objects.get(template_name=template_name)
+            return entry.token
+        except TemplateTokenLog.DoesNotExist:
+            return None
+
+    @pytest.mark.django_db
+    @pytest.mark.parametrize("view_name,template_name", list(view_template_map.items()))
+    def test_view_renders_expected_template_with_token(self, client, view_name, template_name):
+        # Patch: Ensure a ProgressLog exists for detail view
+        if 'detail' in view_name:
+            from progress.models import ProgressLog
+            log = ProgressLog.objects.create(
+                title='Test Log',
+                summary='Test summary',
+                details='Test details',
+                creation_date=timezone.now()
+            )
+            url = reverse(view_name, args=[log.id])
+        else:
+            url = reverse(view_name)
+        response = client.get(url)
+        assert response.status_code == 200
+        # Get rendered template name
+        rendered_templates = [t.name for t in getattr(response, 'templates', []) if t.name]
+        assert template_name in rendered_templates, f"Expected {template_name}, got {rendered_templates}"
+        # Extract token from HTML comment
+        match = re.search(r'<!-- TOKEN: ([a-f0-9]{64}) -->', response.content.decode())
+        assert match, f"No token found in HTML for {template_name}"
+        token = match.group(1)
+        # Get expected token from DB
+        expected_token = self.get_expected_token(template_name)
+        assert expected_token is not None, f"No expected token found in DB for {template_name}"
+        assert token == expected_token, f"Token mismatch for {template_name}: expected {expected_token}, got {token}"
+
+
 @pytest.mark.django_db
-class TestProgressLogMVP():
+class TestProgressLogMVP:
     # create a test user
     @pytest.fixture
     def user(self, django_user_model):
@@ -17,7 +68,6 @@ class TestProgressLogMVP():
 
     # Test that the progress log model can be created and has required fields
     def test_progress_log_model(self, user):
-        from progress.models import ProgressLog
         log = ProgressLog.objects.create(
             title='Test Progress Log',
             summary='This is a test summary',
@@ -44,7 +94,7 @@ class TestProgressLogMVP():
         )
         response = client.get(reverse('progress:progress-log-list'))
         assert response.status_code == 200
-    
+
     def test_progress_log_detail_view(self, client, user):
         client.force_login(user)
         log = ProgressLog.objects.create(
@@ -57,7 +107,7 @@ class TestProgressLogMVP():
         )
         response = client.get(reverse('progress:progress-log-detail', args=[log.id]))
         assert response.status_code == 200
-    
+
     # test that progress-main renders the latest progress log
     def test_progress_main_view_renders_latest_log(self, client, user):
         # Old log
@@ -101,11 +151,11 @@ class TestProgressLogMVP():
 
         log = ProgressLog.objects.latest('creation_date')
         assert log.title == 'New Log Entry'
-    
+
     @pytest.mark.xfail(reason="This test is currently failing due to an issue with the form handling.")
     def test_progress_log_form_edits_existing_log(self, client, user):
         client.force_login(user)
-        
+
         original_log = ProgressLog.objects.create(
             title='Original Log',
             summary='Original summary',
@@ -131,7 +181,7 @@ class TestProgressLogMVP():
         original_log.refresh_from_db()
         assert original_log.title == 'Updated Title'
         assert original_log.reflection == 'Updated reflection'
-    
+
     def test_progress_log_delete_view(self, client, user):
         client.force_login(user)
         log = ProgressLog.objects.create(

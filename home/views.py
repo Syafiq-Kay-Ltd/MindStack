@@ -1,11 +1,6 @@
 # home/views.py
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-def ViewHomepage(request):
-    return render(
-        request, 
-        'home.html', 
-        {
-        'title': "Welcome to the Home Page!",
-        }
-    )
+class ViewHomepage(TemplateView):
+    template_name = 'home.html'
+    

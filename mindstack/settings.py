@@ -18,6 +18,7 @@ ALLOWED_HOSTS = [
     "syafiq-kay-2.onrender.com",
     "localhost",
     "127.0.0.1",
+    "testserver",
 ]
 
 # CSRF trusted origins for production and staging
@@ -74,19 +75,28 @@ WSGI_APPLICATION = 'mindstack.wsgi.application'
 
 
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'mssql',
-        'NAME': os.environ.get('AZURE_SQL_DB_NAME', 'mydatabase'),
-        'USER': os.environ.get('AZURE_SQL_DB_USER', 'django'),
-        'PASSWORD': os.environ.get('AZURE_SQL_DB_PASSWORD', 'mysecretpassword'),
-        'HOST': os.environ.get('AZURE_SQL_DB_HOST', 'localhost'),
-        'PORT': os.environ.get('AZURE_SQL_DB_PORT', '1433'),
-        'OPTIONS': {
-            'driver': os.environ.get('AZURE_SQL_DB_DRIVER', 'ODBC Driver 18 for SQL Server'),
-        },
+import sys
+if 'test' in sys.argv or 'pytest' in sys.argv[0]:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': ':memory:',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'mssql',
+            'NAME': os.environ.get('AZURE_SQL_DB_NAME', 'mydatabase'),
+            'USER': os.environ.get('AZURE_SQL_DB_USER', 'django'),
+            'PASSWORD': os.environ.get('AZURE_SQL_DB_PASSWORD', 'mysecretpassword'),
+            'HOST': os.environ.get('AZURE_SQL_DB_HOST', 'localhost'),
+            'PORT': os.environ.get('AZURE_SQL_DB_PORT', '1433'),
+            'OPTIONS': {
+                'driver': os.environ.get('AZURE_SQL_DB_DRIVER', 'ODBC Driver 18 for SQL Server'),
+            },
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
