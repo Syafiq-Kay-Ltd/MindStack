@@ -9,19 +9,44 @@ from django.test import Client
 import graphviz
 
 # Setup Django environment
+
+# Use production settings and ensure read-only mode
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mindstack.settings')
 django.setup()
+
+# Set DB to read-only if possible (for SQL Server, this is best done at the DB level)
+from django.db import connection
+try:
+    with connection.cursor() as cursor:
+        cursor.execute("SET TRANSACTION ISOLATION LEVEL SNAPSHOT;")
+except Exception as e:
+    print(f"Could not set DB to read-only mode: {e}")
 
 from django.conf import settings
 
 def get_view_template_map():
+    # Create dummy objects for views that require pk
+    from cortexdb.models import Note  # Adjust model name if needed
+    try:
+        dummy_note, created = Note.objects.get_or_create(
+            pk=1,
+            defaults={
+                'title': 'Dummy Note',
+                'content': 'Dummy content',
+                # Add other required fields here
+            }
+        )
+    except Exception as e:
+        print(f"Could not create dummy note: {e}")
     """
     Recursively returns a mapping of view names to the templates they render by following all URL patterns, including those from include().
     """
     from django.urls.resolvers import URLPattern, URLResolver
-    resolver = get_resolver()
+    import importlib
     client = Client()
     view_template_map = {}
+    cortexdb_urls = importlib.import_module('cortexdb.urls')
+    patterns = getattr(cortexdb_urls, 'urlpatterns', [])
 
     def follow_patterns(patterns, prefix=''):
         for pattern in patterns:
@@ -29,18 +54,25 @@ def get_view_template_map():
                 if hasattr(pattern, 'name') and pattern.name:
                     try:
                         url = prefix + str(pattern.pattern)
+                        # Replace all Django path converters with dummy values
                         url = url.replace('<int:id>', '1').replace('<int:pk>', '1').replace('<slug:slug>', 'test-slug')
+                        url = url.replace('<str:pk>', '1').replace('<uuid:pk>', '00000000-0000-0000-0000-000000000000')
+                        url = url.replace('<str:id>', '1').replace('<uuid:id>', '00000000-0000-0000-0000-000000000000')
+                        import re
+                        url = re.sub(r'<[^>]+>', '1', url)
                         url = '/' + url if not url.startswith('/') else url
                         response = client.get(url)
                         templates = [t.name for t in getattr(response, 'templates', []) if t.name]
-                        view_template_map[pattern.name] = templates
+                        if templates:
+                            view_template_map[pattern.name] = templates
+                        else:
+                            view_template_map[pattern.name] = ['No template rendered']
                     except Exception as e:
                         view_template_map[pattern.name] = [f'Error: {e}']
             elif isinstance(pattern, URLResolver):
-                # Recursively follow included patterns
                 follow_patterns(pattern.url_patterns, prefix + str(pattern.pattern))
 
-    follow_patterns(resolver.url_patterns)
+    follow_patterns(patterns)
     return view_template_map
 
 def visualise_view_template_map(view_template_map, output_file='view_template_map.gv'):
