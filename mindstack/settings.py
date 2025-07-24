@@ -68,32 +68,19 @@ WSGI_APPLICATION = 'mindstack.wsgi.application'
 
 
 # Database
-import dj_database_url # type: ignore
-if database_url := os.environ.get("DATABASE_URL"):
-    DATABASES = {
-        'default': dj_database_url.parse(database_url, conn_max_age=600)
+DATABASES = {
+    'default': {
+        'ENGINE': 'mssql',
+        'NAME': os.environ.get('AZURE_SQL_DB_NAME', 'mydatabase'),
+        'USER': os.environ.get('AZURE_SQL_DB_USER', 'django'),
+        'PASSWORD': os.environ.get('AZURE_SQL_DB_PASSWORD', 'mysecretpassword'),
+        'HOST': os.environ.get('AZURE_SQL_DB_HOST', 'localhost'),
+        'PORT': os.environ.get('AZURE_SQL_DB_PORT', '1433'),
+        'OPTIONS': {
+            'driver': os.environ.get('AZURE_SQL_DB_DRIVER', 'ODBC Driver 18 for SQL Server'),
+        },
     }
-elif all(var in os.environ for var in [
-    'DB_NAME', 'DB_USER', 'DB_PASSWORD', 'DB_HOST'
-]):
-    DB_ENGINE = os.environ.get('DJANGO_DB_ENGINE', 'django.db.backends.postgresql')
-    DATABASES = {
-        'default': {
-            'ENGINE': DB_ENGINE,
-            'NAME': os.environ.get('DB_NAME', 'mydatabase'),
-            'USER': os.environ.get('DB_USER', 'postgres'),
-            'PASSWORD': os.environ.get('DB_PASSWORD', 'mysecretpassword'),
-            'HOST': os.environ.get('DB_HOST', 'localhost'),
-            'PORT': os.environ.get('DB_PORT', '5432'),
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
