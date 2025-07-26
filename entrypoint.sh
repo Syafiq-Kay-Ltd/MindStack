@@ -1,4 +1,5 @@
 #!/bin/sh
++ set -eux
 set -e
 
 # Create .netrc file for git HTTPS auth using Render environment variable
