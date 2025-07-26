@@ -14,8 +14,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "your-default-secret-key")  # U
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "mindstack.syafiqkay.com",
-    "syafiq-kay-2.onrender.com",
+    "www.syafiqkay.com",
+    "syafiq-kay-1.onrender.com",
     "localhost",
     "127.0.0.1",
     "testserver",
@@ -23,8 +23,8 @@ ALLOWED_HOSTS = [
 
 # CSRF trusted origins for production and staging
 CSRF_TRUSTED_ORIGINS = [
-    "https://mindstack.syafiqkay.com",
-    "https://syafiq-kay-2.onrender.com",
+    "https://www.syafiqkay.com",
+    "https://syafiq-kay-1.onrender.com",
 ]
 # Application definition
 
