@@ -1,0 +1,121 @@
+:root {
+  /* Your Palette */
+  --rich-black: #001219ff;
+  --midnight-green: #005f73ff;
+  --dark-cyan: #0a9396ff;
+  --tiffany-blue: #94d2bdff;
+  --vanilla: #e9d8a6ff;
+  --gamboge: #ee9b00ff;
+  --alloy-orange: #ca6702ff;
+  --rust: #bb3e03ff;
+  --rufous: #ae2012ff;
+  --auburn: #9b2226ff;
+  --vivid-sky-blue: #E3FAFF;
+  --azure-web: #EDFCFF;
+
+  /* Bootstrap Core Colors Override */
+  --bs-primary: var(--dark-cyan);          /* main primary */
+  --bs-secondary: var(--midnight-green);   /* secondary / dark neutral */
+  --bs-success: var(--tiffany-blue);        /* success (lighter, fresh) */
+  --bs-info: var(--vanilla);                /* info (soft neutral) */
+  --bs-warning: var(--gamboge);             /* warning (bright yellow) */
+  --bs-danger: var(--auburn);               /* danger (deep red) */
+  --bs-light: var(--vivid-sky-blue);        /* light background */
+  --bs-dark: var(--rich-black);             /* dark background/text */
+
+  /* Text and Background */
+  --bs-body-bg: var(--azure-web);          /* very light background */
+  --bs-body-color: var(--rich-black);      /* main text color */
+  --bs-link-color: var(--dark-cyan);
+  --bs-link-hover-color: var(--gamboge);
+
+  /* Borders */
+  --bs-border-color: var(--vanilla);       /* light border */
+  --bs-btn-border-color: var(--dark-cyan);
+  --bs-btn-hover-border-color: var(--gamboge);
+
+  /* Buttons */
+  --bs-btn-color: var(--alloy-orange);
+  --bs-btn-bg: var(--dark-cyan);
+  --bs-btn-hover-color: var(--rufous);
+  --bs-btn-hover-bg: var(--gamboge);
+
+  /* Additional UI elements */
+  --bs-card-bg: var(--tiffany-blue);
+  --bs-card-border-color: var(--tiffany-blue);
+  --bs-navbar-bg: var(--midnight-green);
+  --bs-navbar-color: var(--dark-cyan);
+
+  /* Additional text colors */
+  --text-muted: var(--rust);
+  --text-info: var(--vanilla);
+  --text-warning: var(--gamboge);
+  --text-danger: var(--auburn);
+
+  /* Shadows using palette (subtle variants) */
+  --bs-box-shadow-sm: 0 1px 2px 0 rgba(10, 147, 150, 0.1); /* dark-cyan light */
+  --bs-box-shadow: 0 4px 6px rgba(0, 31, 25, 0.1);         /* rich-black light */
+
+  /* Gradients */
+  --bs-gradient-primary: linear-gradient(45deg, var(--dark-cyan), var(--midnight-green));
+  --bs-gradient-danger: linear-gradient(45deg, var(--auburn), var(--gamboge));
+}
+
+/* Example usage */
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+a {
+  color: var(--bs-link-color);
+}
+a:hover, a:focus {
+  color: var(--bs-link-hover-color);
+  text-decoration: underline;
+}
+
+.btn-primary {
+  color: var(--bs-btn-color);
+  background-color: var(--bs-btn-bg);
+  border-color: var(--bs-btn-border-color);
+}
+.btn-primary:hover, .btn-primary:focus {
+  color: var(--bs-btn-hover-color);
+  background-color: var(--bs-btn-hover-bg);
+  border-color: var(--bs-btn-hover-border-color);
+}
+
+.navbar {
+  background-color: var(--bs-navbar-bg);
+  color: var(--bs-navbar-color);
+}
+.navbar a {
+  color: var(--bs-navbar-color);
+}
+.navbar a:hover {
+  color: var(--vanilla);
+}
+
+.card {
+  background-color: var(--bs-card-bg);
+  border-color: var(--bs-card-border-color);
+  margin: 1em;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+.text-info {
+  color: var(--text-info) !important;
+}
+.text-warning {
+  color: var(--text-warning) !important;
+}
+.text-danger {
+  color: var(--text-danger) !important;
+}
+
+.jumbotron {
+  background-color: transparent;
+}

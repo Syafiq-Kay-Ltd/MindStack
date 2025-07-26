@@ -6,18 +6,18 @@
 a,
 a:focus,
 a:hover {
-  color: #c1a5a9ff;
+  color: var(--bs-link-color);
+  text-decoration: none;
 }
 
 /* Custom default button */
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
-  color: #3f5865ff;
+  color: var(--bs-btn-color);
+  background-color: var(--bs-btn-bg;
+  border: 0.05rem solid var(--bs-btn-border-color);
   text-shadow: none;
-  /* Prevent inheritance from `body` */
-  background-color: #f2d96dff;
-  border: .05rem solid #f2d96dff;
 }
 
 
@@ -28,23 +28,19 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #eef6fcff;
-}
-
-body {
-  display: -ms-flexbox;
-  display: -webkit-box;
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
   display: flex;
-  -ms-flex-pack: center;
-  -webkit-box-pack: center;
   justify-content: center;
-  color: #3f5865ff;
-  /* text-shadow: 0 .05rem .1rem rgba(193, 165, 169, 1);
-  box-shadow: inset 0 0 5rem rgba(193, 165, 169, 1); */
 }
 
 .cover-container {
-  max-width: 42em;
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 
@@ -60,25 +56,27 @@ body {
 }
 
 .nav-masthead .nav-link {
-  padding: .25rem 0;
-  font-weight: 700;
-  color: rgba(29, 2, 29, 1);
+  padding: 0.25rem 0;
+  font-weight: 600;
+  color: var(--bs-nav-link-color);
   background-color: transparent;
-  border-bottom: .25rem solid transparent;
+  border-bottom: 0.25rem solid transparent;
+  text-transform: capitalize;
+  font-size: 1rem;
 }
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(29, 2, 29, 1);
+  border-bottom-color: currentColor;
 }
 
-.nav-masthead .nav-link+.nav-link {
+.nav-masthead .nav-link + .nav-link {
   margin-left: 1rem;
 }
 
 .nav-masthead .active {
-  color: #f2d96dff;
-  border-bottom-color: #f2d96dff;
+  color: var(--bs-primary);
+  border-bottom-color: var(--bs-primary);
 }
 
 @media (min-width: 48em) {
@@ -100,8 +98,8 @@ body {
 }
 
 .cover .btn-lg {
-  padding: .75rem 1.25rem;
-  font-weight: 700;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
 }
 
 
@@ -109,5 +107,5 @@ body {
  * Footer
  */
 .mastfoot {
-  color: rgba(255, 255, 255, .5);
+  color: rgba(var(--bs-black-rgb), 0.5);
 }

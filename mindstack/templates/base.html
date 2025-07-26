@@ -18,27 +18,31 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-honoka@4.4.0/dist/css/bootstrap.min.css">
     <!-- Add Font Awesome CDN for icons to work -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papm6b+...your-integrity-hash..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/custom-fonts.css' %}">
+	<link rel="stylesheet" href="{% static 'css/custom-colour.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Tangerine&family=Dancing+Script&family=Quicksand&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/custom-theme1.css' %}">
 	{% block extra_css %}
-	<link rel="stylesheet" href="{% static 'css/cover.css' %}">
 	{% endblock %}
 </head>
 <body class="text-center">
-	<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+	<div class="d-flex h-100 p-3 mx-auto flex-column">
 
 		<!-- Navbar -->
 		<header class="masthead d-flex mx-auto flex-column">
 			<div class="inner">
-				<h5 class="masthead-brand">MindStack | Syafiq Kay</h5>
+				<h1 class="masthead-brand">Syafiq Kay</h1>
 				<nav class="nav nav-masthead">
-					<a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a>
-					<a class="nav-link" href="{% url 'cortexdb:main' %}"><i class="fa-solid fa-database"></i> CortexDB</a>
-					<a class="nav-link" href="{% url 'progress:progress-main' %}"><i class="fa-solid fa-blog"></i> Journals</a>
+					<a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house"></i>  Home</a>
+					<a class="nav-link disabled" href="{% url 'cortexdb:main' %}"><i class="fa-solid fa-database"></i>  CortexDB</a>
+					<a class="nav-link disabled" href="{% url 'progress:progress-main' %}"><i class="fa-solid fa-blog"></i>  Journals</a>
 				</nav>
 			</div>
 		</header>
 
 		<!-- Main content area -->
-		<main role="main" class="inner cover">
+		<main role="main" class="inner">
 			<div class="container my-auto mx-auto">
 				{% block content %}
 				<!-- insert child content here -->
@@ -47,29 +51,29 @@
 		</main>
 
 		<!-- Footer -->
-		<footer class="mastfoot mt-auto text-dark">
+		<footer class="mt-auto text-dark">
 			<div class="inner">
 				<!-- footer quick links -->
 				<section class="row text-center d-flex justify-content-center pt-5 mt-4 mb-4">
 					<!-- Grid column -->
 					<div class="col-md-2">
-						<h6 class="text-uppercase font-weight-bold"><a href="#!" class="nav-masthead nav-link">Docs</a></h6>
+						<a href="#!" class="nav-masthead nav-link">Docs</a>
 					</div>
 					<!-- Grid column -->
 					<div class="col-md-2">
-						<h6 class="text-uppercase font-weight-bold"><a href="#!" class="nav-masthead nav-link">Refs</a></h6>
+						<a href="#!" class="nav-masthead nav-link">Refs</a>
 					</div>
 					<!-- Grid column -->
 					<div class="col-md-2">
-						<h6 class="text-uppercase font-weight-bold"><a href="#!" class="nav-masthead nav-link">Quick Link 1</a></h6>
+						<a href="#!" class="nav-masthead nav-link">Quick Link 1</a>
 					</div>
 					<!-- Grid column -->
 					<div class="col-md-2">
-						<h6 class="text-uppercase font-weight-bold"><a href="#!" class="nav-masthead nav-link">Quick Link 2</a></h6>
+						<a href="#!" class="nav-masthead nav-link">Quick Link 2</a>
 					</div>
 					<!-- Grid column -->
 					<div class="col-md-2">
-						<h6 class="text-uppercase font-weight-bold"><a href="{% url 'admin:index' %}" class="nav-masthead nav-link"><i class="fa-solid fa-gear"></i> Admin</a></h6>
+						<a href="{% url 'admin:index' %}" class="nav-masthead nav-link disabled"><i class="fa-solid fa-gear"></i> Admin</a>
 					</div>
 				</section>
 				<hr>
@@ -84,7 +88,7 @@
 				</section>
 				<!-- disclaimer -->
 				<section class="mt-4 mb-4">
-					<h6 class="text-uppercase font-weight-bold mb-4">Disclaimer</h6>
+					<h3>Disclaimer</h3>
 					<p>The information presented here is intended solely for personal reference and general interest. It does not constitute clinical, legal, or professional advice, and should not be relied upon in such contexts. No guarantees or warranties, express or implied, are provided regarding the accuracy or completeness of the content.</p>
 				</section>
 				<!-- copyright and license section -->
