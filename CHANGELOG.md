@@ -1,3 +1,19 @@
+## 0.2.0 (2025-07-26)
+
+### Feat
+
+- **home**: added hero sections
+
+### Fix
+
+- Dockerfile
+
+### Refactor
+
+- refactor codes
+- **mindstack**: clarify and simplify
+- **progress**: tokenisation
+
 ## 0.1.0 (2025-07-24)
 
 ### Feat
