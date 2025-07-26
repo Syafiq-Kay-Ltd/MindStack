@@ -1,20 +1,143 @@
 <!-- TOKEN: 461eaf23eae01e5896b8e667dc1c48568683aef5a8046f4aaa8aabf04b55bbf6 -->
 {% extends "base.html" %}
-{% load static %}
 
-{% block title %}
-    Home Page
+{% block extra_css %}
+<style>
+    body {
+        font-family: "Segoe UI", Roboto, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        padding: 2rem;
+    }
+    h2 {
+        color: #0077b6;
+    }
+    .mermaid {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1rem;
+        overflow-x: auto;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+</style>
 {% endblock %}
 
 {% block content %}
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <main role="main" class="inner cover">
-        <h1 class="cover-heading">Welcome | ようこそ</h1>
-        <p class="lead">Hi, I am Syafiq. </p>
-        <p class="lead">In this website, I share my journey in technology, programming, and personal growth. You’ll find tutorials, articles, and resources covering topics like web development, Python, Django, and more.</p>
-        <p class="lead">My goal is to help beginners and enthusiasts learn new skills, solve problems, and stay motivated in their learning process.</p>
-        <p class="lead">I also post updates on my projects, insights from my experiences, and tips for improving productivity.</p>
-        <p class="lead">Whether you’re just starting out or looking to deepen your knowledge, I hope you find something valuable here. Thank you for visiting, and feel free to explore!</p>
+
+        <section id="introduction">
+            <h2>I learn. I build. I question. I explore. And I’m glad you’re here.</h2>
+            <p>Hi, I’m Syafiq. I’m a pharmacist working in London, but my interests stretch much wider—from healthcare and law to systems, science, and computing. This site is my little lab for ideas: part journal, part testing ground, part quiet rebellion against sticking to just one thing.</p>
+            <p>If you enjoy learning across boundaries, building things thoughtfully, or just following curiosity wherever it leads—you’re in good company.</p>
+        </section>
+
+        <section id="capabilities">
+          <h2>What I do, and how I think.</h2>
+          
+          <p>I design modular systems, write clean and purposeful code, and ask questions that reach beyond the clinical. As a community pharmacist, I’ve seen healthcare at its limits—when patients struggle to reach their GPs or turn to private services out of necessity. These moments shape how I approach systems, not just in medicine, but across technology, policy, and everyday life.</p>
+          
+          <p>Alongside clinical work, I build web apps, explore workflows, and study how disciplines like law, ethics, and computing shape the world around us. My approach blends structured thinking with curiosity across domains.</p>
+          
+          <p><strong>Here’s what powers my work:</strong></p>
+          
+          <ul>
+            <li><strong>Pharmacy & Clinical Insight:</strong> Grounded in day-to-day care, I see both the fragility and the resilience of healthcare systems.</li>
+            <li><strong>Multidisciplinary Curiosity:</strong> From science and maths to law and tech—I draw connections across boundaries.</li>
+            <li><strong>Modular Development Philosophy:</strong> I favour clean, scalable architecture with reusable components and clarity of purpose.</li>
+            <li><strong>Research & Systems Thinking:</strong> I explore how ideas scale and interact—always zooming out before drilling down.</li>
+            <li><strong>Personal Platform & Public Impact:</strong> This site is both a reflection and an invitation—open to anyone curious about how things fit together.</li>
+          </ul>
+        </section>
+
+        <section id="achievements">
+            <h2>📜 Syafiq’s Timeline</h2>
+            <p>This timeline reflects an interdisciplinary journey—spanning pharmacy, biotech, law, and computing. Each milestone marks a deliberate shift toward integrating clinical care, legal insight, and technical exploration into a cohesive personal mission.</p>
+            <div class="mermaid">
+                timeline
+                    title Syafiq's Professional & Intellectual Journey
+
+                    2009 : 🎓 Awarded a scholarship to study Pharmacy at King’s College London
+                    2016 : 🧪 Completed MPharm with a dissertation on protein hydrophobic core prediction; shared on ResearchGate
+                    2017 : 🔬 Joined a biotech startup and began a funded PhD exploring PBD-DNA payload sequence selectivity
+                    2019 : 📄 Co-authored paper on ADC payload toxicity — Drug Discovery Today: Technologies
+                    2020 : 📄 Co-authored paper on guanine mono-alkylating ADC payload — RSC Medicinal Chemistry
+                    2020 : 💊 Left PhD program to return to patient-facing role in community pharmacy
+                    2020 : 📚 Pursued Graduate Diploma in Law during COVID, deepening interest in legal-health intersections
+                    2021 : 🧑‍⚖️ Took on multidisciplinary advocacy roles—PRPR, IMCA, and more—serving vulnerable populations
+                    2023 : 🧠 Began MSc in Mental Health Ethics & Law at KCL; joined mental health trust as frontline pharmacist
+                    2024 : 💉 Enrolled in Independent Prescribing course (paused due to personal reasons)
+                    2025 : 🔐 Rebounded with cybersecurity training (completed AZ-900) via Robust IT; regained technical momentum
+                    2025 : 🌐 Built personal website with Django from scratch—integrating law, healthcare, and computing insights
+            </div>
+        </section>
+
+        <section id="inspiration">
+            <h2>✨ Inspire – Why I Do What I Do</h2>
+            <p>This diagram illustrates how my motivations span ethics, healthcare, law, and computing—woven together in pursuit of clarity and humane design.</p>
+            <div class="mermaid">
+                mindmap
+                    root((Why I Do What I Do))
+
+                        Integration
+                            Ethics meets computing
+                            Law aligns with clinical care
+                            Tech serves human stories
+
+                        Exploration
+                            Pharmacy and Biotech
+                            Legal Advocacy
+                            Mental Health
+                            Programming and Systems Design
+
+                        Motivation
+                            Search for clarity
+                            Designing humane systems
+                            Empowering people through knowledge
+
+                        Expression
+                            Django-powered personal site
+                            Writing and reflection
+                            Knowledge architecture
+            </div>
+        </section>
+
+        <section id="roadmap">
+            <h2>🛤️ Roadmap – What I’m Working On Next</h2>
+            <p>This roadmap tracks my forward motion across domains—building systems, advancing education, and refining workflows with purpose.</p>
+            <div class="mermaid">
+                gantt
+                    title Syafiq's Personal and Technical Roadmap
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %b %Y
+
+                    section Website & Workflow
+                    Improve personal site      :a1, 2025-07-01, 30d
+                    Kanban board w/ HTMX       :a2, after a1, 20d
+                    Git flow on iPad           :a3, after a2, 25d
+
+                    section Education & Advocacy
+                    MSc Mental Health Ethics & Law (ongoing)   :b1, 2024-09-01, 365d
+                    Continue advocacy work                     :b2, 2025-01-01, 180d
+                    Storage system optimization                :b3, 2025-08-01, 45d
+
+                    section Cybersecurity Progression
+                    AZ-900 (completed)         :done, c1, 2025-06-01, 10d
+                    SC-900 preparation         :c2, 2025-07-15, 30d
+                    MS-500 follow-up           :c3, after c2, 45d
+
+                    section Lifestyle Goals
+                    Property search near Elizabeth Line        :d1, 2025-07-01, 90d
+                    Vision mapping for future ecosystem        :d2, 2025-09-01, 60d
+            </div>
+        </section>
     </main>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+</script>
 {% endblock %}
