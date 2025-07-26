@@ -1,0 +1,111 @@
+/*
+ * Globals
+ */
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: var(--bs-link-color, #a36c7e);
+  text-decoration: none;
+}
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: var(--bs-btn-color, #2c3e50);
+  background-color: var(--bs-btn-bg, #f2d96d);
+  border: 0.05rem solid var(--bs-btn-border-color, #f2d96d);
+  text-shadow: none;
+}
+
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+  background-color: var(--bs-body-bg, #eef6fc);
+  color: var(--bs-body-color, #3f5865);
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.cover-container {
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+
+/*
+ * Header
+ */
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: 0.25rem 0;
+  font-weight: 600;
+  color: var(--bs-nav-link-color, #1d021d);
+  background-color: transparent;
+  border-bottom: 0.25rem solid transparent;
+  text-transform: none;
+  font-size: 1rem;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: currentColor;
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: var(--bs-primary, #f2d96d);
+  border-bottom-color: var(--bs-primary, #f2d96d);
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+
+  .nav-masthead {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 1.5rem;
+}
+
+.cover .btn-lg {
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+}
+
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: rgba(0, 0, 0, 0.5);
+}

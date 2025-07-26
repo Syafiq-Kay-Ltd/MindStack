@@ -1,0 +1,64 @@
+:root {
+  /* Your Palette */
+  --charcoal: #264653ff;
+  --persian-green: #2a9d8fff;
+  --saffron: #e9c46aff;
+  --sandy-brown: #f4a261ff;
+  --burnt-sienna: #e76f51ff;
+
+  /* Bootstrap Core Colors Override */
+  --bs-primary: var(--persian-green);        /* main primary */
+  --bs-secondary: var(--charcoal);           /* dark neutral */
+  --bs-success: var(--persian-green);        /* success */
+  --bs-info: var(--sandy-brown);             /* info */
+  --bs-warning: var(--saffron);               /* warning */
+  --bs-danger: var(--burnt-sienna);           /* danger */
+  --bs-light: #fefefe;                        /* light background */
+  --bs-dark: var(--charcoal);                 /* dark background/text */
+
+  /* Text and Background */
+  --bs-body-bg: #f8fafb;                      /* very light background */
+  --bs-body-color: var(--charcoal);           /* main text color */
+  --bs-link-color: var(--persian-green);
+  --bs-link-hover-color: var(--sandy-brown);
+
+  /* Borders */
+  --bs-border-color: #d9dfe3;                 /* light border color */
+  --bs-btn-border-color: var(--persian-green);
+  --bs-btn-hover-border-color: var(--sandy-brown);
+
+  /* Buttons */
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--persian-green);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--sandy-brown);
+}
+
+
+/* Optional: focus states for accessibility */
+.btn:focus, 
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.25rem rgba(42, 157, 143, 0.5); /* semi-transparent persian-green */
+}
+
+/* Links */
+a:hover, a:focus {
+  color: var(--bs-link-hover-color);
+  text-decoration: underline;
+}
+
+/* Alerts example */
+.alert-primary {
+  background-color: var(--persian-green);
+  color: #fff;
+}
+
+.alert-danger {
+  background-color: var(--burnt-sienna);
+  color: #fff;
+}
+
+.alert-warning {
+  background-color: var(--saffron);
+  color: var(--charcoal);
+}

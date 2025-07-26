@@ -1,0 +1,24 @@
+h1, h2, h3 {
+  font-family: 'Tangerine', cursive;
+}
+
+h4, h5, h6 {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 500;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+button,
+.btn,
+a,
+.nav-link {
+  min-width: 100px;   /* Minimum width */
+  min-height: 40px;   /* Minimum height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem; /* Optional: ensures good spacing inside */
+}

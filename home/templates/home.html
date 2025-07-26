@@ -2,79 +2,203 @@
 {% extends "base.html" %}
 
 {% block extra_css %}
-<style>
-    body {
-        font-family: "Segoe UI", Roboto, sans-serif;
-        background-color: #f9f9f9;
-        color: #333;
-        padding: 2rem;
-    }
-    h2 {
-        color: #0077b6;
-    }
-    .mermaid {
-        background: #fff;
-        border-radius: 8px;
-        padding: 1rem;
-        overflow-x: auto;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-</style>
 {% endblock %}
 
 {% block content %}
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <main role="main" class="inner cover">
-
-        <section id="introduction">
-            <h2>I learn. I build. I question. I explore. And I’m glad you’re here.</h2>
-            <p>Hi, I’m Syafiq. I’m a pharmacist working in London, but my interests stretch much wider—from healthcare and law to systems, science, and computing. This site is my little lab for ideas: part journal, part testing ground, part quiet rebellion against sticking to just one thing.</p>
-            <p>If you enjoy learning across boundaries, building things thoughtfully, or just following curiosity wherever it leads—you’re in good company.</p>
+        <br>
+        <section class="jumbotron" id="introduction">
+            <h1 class="display-4">Curious mind, careful judgement, lasting value</h1>
+            <p class="h5 text-muted fst-italic">Welcome and thank you for dropping by.</p>
+            <p class="lead">Hi, I’m Syafiq. I’m a pharmacist working in London, but my interests stretch much wider—from healthcare and law to systems, science, and computing. This site is my little lab for ideas: part journal, part testing ground, part quiet rebellion against sticking to just one thing.</p>
+            <p class="lead">If you enjoy learning across boundaries, building things thoughtfully, or just following curiosity wherever it leads—you’re in good company.</p>
         </section>
+        <br>
+        <section class="jumbotron" id="capabilities">
+            <h1 class="display-4">What I do, and how I think.</h1>
+            <br>
+            <p class="lead">I design modular systems, write clean and purposeful code, and ask questions that reach beyond the clinical. As a community pharmacist, I’ve seen healthcare at its limits—when patients struggle to reach their GPs or turn to private services out of necessity. These moments shape how I approach systems, not just in medicine, but across technology, policy, and everyday life.</p>
+            <br>
+            <p class="lead">Alongside clinical work, I build web apps, explore workflows, and study how disciplines like law, ethics, and computing shape the world around us. My approach blends structured thinking with curiosity across domains.</p>
+            <br>
+            <h3 class="display-6">💼 Capabilities That Power My Work</h3>
+            <br>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <br>
+              <!-- Pharmacy & Clinical Insight -->
+              <div class="col mb-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                  <div class="card-body">
+                    <h5 class="card-title">💊 Pharmacy & Clinical Insight</h5>
+                    <p class="card-text">Grounded in direct care, I’ve seen the fragility and resilience of health systems. This sharpens my ethical lens and fuels my design instincts.</p>
+                  </div>
+                </div>
+              </div>
 
-        <section id="capabilities">
-          <h2>What I do, and how I think.</h2>
-          
-          <p>I design modular systems, write clean and purposeful code, and ask questions that reach beyond the clinical. As a community pharmacist, I’ve seen healthcare at its limits—when patients struggle to reach their GPs or turn to private services out of necessity. These moments shape how I approach systems, not just in medicine, but across technology, policy, and everyday life.</p>
-          
-          <p>Alongside clinical work, I build web apps, explore workflows, and study how disciplines like law, ethics, and computing shape the world around us. My approach blends structured thinking with curiosity across domains.</p>
-          
-          <p><strong>Here’s what powers my work:</strong></p>
-          
-          <ul>
-            <li><strong>Pharmacy & Clinical Insight:</strong> Grounded in day-to-day care, I see both the fragility and the resilience of healthcare systems.</li>
-            <li><strong>Multidisciplinary Curiosity:</strong> From science and maths to law and tech—I draw connections across boundaries.</li>
-            <li><strong>Modular Development Philosophy:</strong> I favour clean, scalable architecture with reusable components and clarity of purpose.</li>
-            <li><strong>Research & Systems Thinking:</strong> I explore how ideas scale and interact—always zooming out before drilling down.</li>
-            <li><strong>Personal Platform & Public Impact:</strong> This site is both a reflection and an invitation—open to anyone curious about how things fit together.</li>
-          </ul>
-        </section>
+              <!-- Multidisciplinary Curiosity -->
+              <div class="col mb-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                  <div class="card-body">
+                    <h5 class="card-title">🧠 Multidisciplinary Curiosity</h5>
+                    <p class="card-text">From molecular biology to legal reasoning, I draw unconventional connections across domains that aren’t usually in dialogue.</p>
+                  </div>
+                </div>
+              </div>
 
-        <section id="achievements">
-            <h2>📜 Syafiq’s Timeline</h2>
-            <p>This timeline reflects an interdisciplinary journey—spanning pharmacy, biotech, law, and computing. Each milestone marks a deliberate shift toward integrating clinical care, legal insight, and technical exploration into a cohesive personal mission.</p>
-            <div class="mermaid">
-                timeline
-                    title Syafiq's Professional & Intellectual Journey
+              <!-- Modular Development Philosophy -->
+              <div class="col mb-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                  <div class="card-body">
+                    <h5 class="card-title">🧩 Modular Development Philosophy</h5>
+                    <p class="card-text">I value simplicity, scalability, and clarity—favoring reusable components and service layers that reduce friction and maximize impact.</p>
+                  </div>
+                </div>
+              </div>
 
-                    2009 : 🎓 Awarded a scholarship to study Pharmacy at King’s College London
-                    2016 : 🧪 Completed MPharm with a dissertation on protein hydrophobic core prediction; shared on ResearchGate
-                    2017 : 🔬 Joined a biotech startup and began a funded PhD exploring PBD-DNA payload sequence selectivity
-                    2019 : 📄 Co-authored paper on ADC payload toxicity — Drug Discovery Today: Technologies
-                    2020 : 📄 Co-authored paper on guanine mono-alkylating ADC payload — RSC Medicinal Chemistry
-                    2020 : 💊 Left PhD program to return to patient-facing role in community pharmacy
-                    2020 : 📚 Pursued Graduate Diploma in Law during COVID, deepening interest in legal-health intersections
-                    2021 : 🧑‍⚖️ Took on multidisciplinary advocacy roles—PRPR, IMCA, and more—serving vulnerable populations
-                    2023 : 🧠 Began MSc in Mental Health Ethics & Law at KCL; joined mental health trust as frontline pharmacist
-                    2024 : 💉 Enrolled in Independent Prescribing course (paused due to personal reasons)
-                    2025 : 🔐 Rebounded with cybersecurity training (completed AZ-900) via Robust IT; regained technical momentum
-                    2025 : 🌐 Built personal website with Django from scratch—integrating law, healthcare, and computing insights
+              <!-- Research & Systems Thinking -->
+              <div class="col mb-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                  <div class="card-body">
+                    <h5 class="card-title">📚 Research & Systems Thinking</h5>
+                    <p class="card-text">I zoom out to see the systems first—how ideas interact and scale—before distilling them into focused, modular components.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Personal Platform & Public Impact -->
+              <div class="col mb-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                  <div class="card-body">
+                    <h5 class="card-title">🌐 Personal Platform & Public Impact</h5>
+                    <p class="card-text">This site reflects both personal growth and public contribution—a knowledge base for curious minds who care about how things fit together.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- New Balanced Card -->
+              <div class="col mb-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                  <div class="card-body">
+                    <h5 class="card-title">⚙️ Continuous Learning & Adaptation</h5>
+                    <p class="card-text">Committed to growth, I continually update skills and knowledge across domains, integrating lessons into everything I build and advocate for.</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
-        </section>
 
-        <section id="inspiration">
-            <h2>✨ Inspire – Why I Do What I Do</h2>
-            <p>This diagram illustrates how my motivations span ethics, healthcare, law, and computing—woven together in pursuit of clarity and humane design.</p>
+        </section>
+        <br>
+        <section class="jumbotron" id="achievements">
+            <h1 class="display-4">My Journey</h1>
+            <br>
+            <p class="lead">This timeline reflects an interdisciplinary journey—spanning pharmacy, biotech, law, and computing. Each milestone marks a deliberate shift toward integrating clinical care, legal insight, and technical exploration into a cohesive personal mission.</p>
+            <br>
+            <section class="container py-5">
+                <h3 class="display-6">Here's what I have achieved!</h3>
+                <br>
+                <ul class="list-group list-group-flush position-relative">
+
+                    <li class="list-group-item ps-5 bg-transparent border-0 position-relative text-start">
+                        <div class="d-flex flex-column align-items-center position-relative" style="margin-left: -2.5rem;">
+                            <span class="badge rounded-pill bg-primary text-white mb-1" style="z-index:1;">2009</span>
+                            <div>
+                                <i class="bi bi-award-fill me-2 text-primary"></i>
+                                Received a scholarship to study pharmacy (MPharm) at King's College London
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item ps-5 bg-transparent border-0 position-relative text-start">
+                        <div class="d-flex flex-column align-items-center position-relative" style="margin-left: -2.5rem;">
+                            <span class="badge rounded-pill bg-primary text-white mb-1" style="z-index:1;">2016</span>
+                            <div>
+                                <i class="bi bi-mortarboard-fill me-2 text-primary"></i>
+                                MPharm completed; completed a dissertation on the development of computational method to predict protein's hydrophobic core, self-published on Research Gate and cited by one other paper
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item ps-5 bg-transparent border-0 position-relative text-start">
+                        <div class="d-flex flex-column align-items-center position-relative" style="margin-left: -2.5rem;">
+                            <span class="badge rounded-pill bg-primary text-white mb-1" style="z-index:1;">2017</span>
+                            <div>
+                                <i class="bi bi-flask me-2 text-primary"></i>
+                                Joined a biotech startup; began a PhD on PBD-DNA selectivity
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item ps-5 bg-transparent border-0 position-relative text-start">
+                        <div class="d-flex flex-column align-items-center position-relative" style="margin-left: -2.5rem;">
+                            <span class="badge rounded-pill bg-primary text-white mb-1" style="z-index:1;">2019</span>
+                            <div>
+                                <i class="bi bi-journal-text me-2 text-primary"></i>
+                                Published two papers on antibody-drug conjugate in <em>Drug Discovery Today</em> and <em>RSC Med Chem</em>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item ps-5 bg-transparent border-0 position-relative text-start">
+                        <div class="d-flex flex-column align-items-center position-relative" style="margin-left: -2.5rem;">
+                            <span class="badge rounded-pill bg-primary text-white mb-1" style="z-index:1;">2020</span>
+                            <div>
+                                <i class="bi bi-arrow-repeat me-2 text-primary"></i>
+                                Dropped out of the PhD program; returned to community pharmacy; began Graduate Diploma in Law (GDL)
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item ps-5 bg-transparent border-0 position-relative text-start">
+                        <div class="d-flex flex-column align-items-center position-relative" style="margin-left: -2.5rem;">
+                            <span class="badge rounded-pill bg-primary text-white mb-1" style="z-index:1;">2021</span>
+                            <div>
+                                <i class="bi bi-people-fill me-2 text-primary"></i>
+                                Advocacy roles: PRPR, IMCA, and others
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item ps-5 bg-transparent border-0 position-relative text-start">
+                        <div class="d-flex flex-column align-items-center position-relative" style="margin-left: -2.5rem;">
+                            <span class="badge rounded-pill bg-primary text-white mb-1" style="z-index:1;">2023</span>
+                            <div>
+                                <i class="bi bi-brain me-2 text-primary"></i>
+                                Completed GDL; started MSc in Mental Health Ethics & Law (ongoing)
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item ps-5 bg-transparent border-0 position-relative text-start">
+                        <div class="d-flex flex-column align-items-center position-relative" style="margin-left: -2.5rem;">
+                            <span class="badge rounded-pill bg-primary text-white mb-1" style="z-index:1;">2024</span>
+                            <div>
+                                <i class="bi bi-pause-circle me-2 text-primary"></i>
+                                Started Independent Prescribing course (on pause currently)
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item ps-5 bg-transparent border-0 position-relative text-start">
+                        <div class="d-flex flex-column align-items-center position-relative" style="margin-left: -2.5rem;">
+                            <span class="badge rounded-pill bg-primary text-white mb-1" style="z-index:1;">2025</span>
+                            <div>
+                                <i class="bi bi-terminal-fill me-2 text-primary"></i>
+                                Re-started learning about coding; enrolled onto a cybersecurity training program; passed AZ-900; built a personal website from scratch by using Django framework
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </section>
+        </section>
+        <br>
+        <section class="jumbotron" id="inspiration">
+            <h1 class="display-4">Inspire – Why I Do What I Do</h1>
+            <br>
+            <p class="lead">This diagram illustrates how my motivations span ethics, healthcare, law, and computing—woven together in pursuit of clarity and humane design.</p>
+            <br>
             <div class="mermaid">
                 mindmap
                     root((Why I Do What I Do))
@@ -101,34 +225,38 @@
                             Knowledge architecture
             </div>
         </section>
-
-        <section id="roadmap">
-            <h2>🛤️ Roadmap – What I’m Working On Next</h2>
-            <p>This roadmap tracks my forward motion across domains—building systems, advancing education, and refining workflows with purpose.</p>
+        <br>
+        <section class="jumbotron" id="now">
+            <h1 class="display-4">What I’m Doing Now</h1>
+            <br>
+            <p class="lead">Balancing clinical advocacy and tech reskilling. Preparing for SC-900, refining my site’s workflow engine, and quietly hunting for a calm flat near the Elizabeth Line.</p>
+        </section>
+        <br>
+        <section class="jumbotron" id="roadmap">
+            <h1 class="display-4">Roadmap – What I’m Working On Next</h1>
+            <br>
+            <p class="lead">This roadmap tracks my forward motion across domains—building systems, advancing education, and refining workflows with purpose.</p>
+            <br>
             <div class="mermaid">
                 gantt
-                    title Syafiq's Personal and Technical Roadmap
+                    title Roadmap
                     dateFormat  YYYY-MM-DD
                     axisFormat  %b %Y
 
-                    section Website & Workflow
-                    Improve personal site      :a1, 2025-07-01, 30d
-                    Kanban board w/ HTMX       :a2, after a1, 20d
-                    Git flow on iPad           :a3, after a2, 25d
+                    section Web Development
+                    Refactor personal website                           :a1, 2025-05-01, 100d
+                    Implement Zettelkasten note-taking system           :a2, after a1, 60d
+                    Build knowledge library                             :a3, after a2, 100d
 
-                    section Education & Advocacy
-                    MSc Mental Health Ethics & Law (ongoing)   :b1, 2024-09-01, 365d
-                    Continue advocacy work                     :b2, 2025-01-01, 180d
-                    Storage system optimization                :b3, 2025-08-01, 45d
+                    section Education
+                    MSc Mental Health Ethics & Law (ongoing)            :b1, 2023-09-01, 3y
+                    Become fluent in Japanese                           :b2, 2023-03-09, 5y
+                    Pharmacist Independent Prescribing                  :b3, 2024-09-01, 1.5y
 
                     section Cybersecurity Progression
-                    AZ-900 (completed)         :done, c1, 2025-06-01, 10d
-                    SC-900 preparation         :c2, 2025-07-15, 30d
-                    MS-500 follow-up           :c3, after c2, 45d
-
-                    section Lifestyle Goals
-                    Property search near Elizabeth Line        :d1, 2025-07-01, 90d
-                    Vision mapping for future ecosystem        :d2, 2025-09-01, 60d
+                    AZ-900 (completed)                                  :done, c1, 2025-04-01, 60d
+                    SC-900 (preparation)                                :c2, 2025-06-30, 60d
+                    CompTIA+ Network+                                   :c3, after c2, 180d
             </div>
         </section>
     </main>
@@ -138,6 +266,10 @@
 {% block extra_js %}
 <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
+
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: "default",
+    });
 </script>
 {% endblock %}

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'progress',
     'cortexdb',
     'storages',
-    # 'taskmanager',
+    'django_unused_media',
 ]
 
 MIDDLEWARE = [
