@@ -40,7 +40,7 @@ jeepney==0.9.0
 Jinja2==3.1.6
 keyring==25.6.0
 MarkupSafe==3.0.2
-git+https://GITHUB_TOKEN_PLACEHOLDER@github.com/Syafiq-Kay-Ltd/MindStack.git@commit#egg=mindstack
+git+https://GITHUB_TOKEN_PLACEHOLDER@github.com/Syafiq-Kay-Ltd/MindStack.git@master#egg=mindstack
 more-itertools==10.7.0
 msgpack==1.1.1
 mssql-django==1.5
