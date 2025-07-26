@@ -6,7 +6,7 @@
 a,
 a:focus,
 a:hover {
-  color: var(--bs-link-color, #a36c7e);
+  color: var(--bs-link-color);
   text-decoration: none;
 }
 
@@ -14,9 +14,9 @@ a:hover {
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
-  color: var(--bs-btn-color, #2c3e50);
-  background-color: var(--bs-btn-bg, #f2d96d);
-  border: 0.05rem solid var(--bs-btn-border-color, #f2d96d);
+  color: var(--bs-btn-color);
+  background-color: var(--bs-btn-bg;
+  border: 0.05rem solid var(--bs-btn-border-color);
   text-shadow: none;
 }
 
@@ -28,8 +28,8 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: var(--bs-body-bg, #eef6fc);
-  color: var(--bs-body-color, #3f5865);
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
   font-family: inherit;
   margin: 0;
   padding: 0;
@@ -58,10 +58,10 @@ body {
 .nav-masthead .nav-link {
   padding: 0.25rem 0;
   font-weight: 600;
-  color: var(--bs-nav-link-color, #1d021d);
+  color: var(--bs-nav-link-color);
   background-color: transparent;
   border-bottom: 0.25rem solid transparent;
-  text-transform: none;
+  text-transform: capitalize;
   font-size: 1rem;
 }
 
@@ -75,8 +75,8 @@ body {
 }
 
 .nav-masthead .active {
-  color: var(--bs-primary, #f2d96d);
-  border-bottom-color: var(--bs-primary, #f2d96d);
+  color: var(--bs-primary);
+  border-bottom-color: var(--bs-primary);
 }
 
 @media (min-width: 48em) {
@@ -107,5 +107,5 @@ body {
  * Footer
  */
 .mastfoot {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(var(--bs-black-rgb), 0.5);
 }
